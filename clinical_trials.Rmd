@@ -1,0 +1,55 @@
+---
+title: "Summary from ClinicalTrials.gov"
+author: Alexandra Bannach-Brown
+date: 2019-05-23
+output: html_document
+---
+
+```{r setup, message=FALSE}
+chooseCRANmirror(graphics=FALSE, ind=1)
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("devtools")
+library(devtools)
+# install_github("sachsmc/rclinicaltrials")
+library(rclinicaltrials)
+```
+
+## Introduction
+
+This is document which shows the summary information from ClinicalTrials.gov <http://clinicaltrials.gov>. This document is built for the EQUATOR Network. 
+
+
+## Number of Trials
+
+The number of records in clinicaltrials.gov is: 
+
+```{r all trials}
+clinicaltrials_count(query = "ALL")
+```
+
+
+## Actively Recruiting Trials
+
+The number of trials that are currently recruiting is: 
+```{r active trials}
+clinicaltrials_count(query = c("recr=Recruiting", "ALL"))
+```
+
+
+## Completed Trials
+
+The number of trials that are marked as completed:
+```{r completed trials}
+clinicaltrials_count(query = c("recr=Completed", "ALL"))
+```
+
+
+## New Trials in 2018
+The number of new trials posted in 2018 is: 
+```{r new trials 2018}
+clinicaltrials_count(query = c("rcv_s=01/01/2018", "rcv_e=12/31/2018"))
+```
+
+
+Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 
+
