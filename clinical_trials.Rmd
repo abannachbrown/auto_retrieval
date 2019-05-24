@@ -10,8 +10,10 @@ chooseCRANmirror(graphics=FALSE, ind=1)
 knitr::opts_chunk$set(echo = TRUE)
 # install.packages("devtools")
 library(devtools)
+install.packages("pandoc")
 # install_github("sachsmc/rclinicaltrials")
 library(rclinicaltrials)
+library(knitr)
 ```
 
 ## Introduction
