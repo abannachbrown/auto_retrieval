@@ -1,0 +1,19 @@
+name: "EQUATOR Number"
+navbar:
+  title: "EQUATOR Numbers"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "ClinicalTrials.gov"
+      href: clinical_trials.html
+    - text: "Systematic Reviews"
+      href: pubmed_sys_rev.html
+    - text: "About"
+      href: about.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
+    include:
+      after_body: footer.html
+    css: styles.css
