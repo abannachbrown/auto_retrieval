@@ -1,24 +1,33 @@
 ---
 title: "Summary from ClinicalTrials.gov"
-author: Alexandra Bannach-Brown
+author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
 date: 2019-05-23
 output: html_document
 ---
 
-```{r setup, message=FALSE}
-chooseCRANmirror(graphics=FALSE, ind=1)
-knitr::opts_chunk$set(echo = TRUE)
-# install.packages("devtools")
-library(devtools)
-#devtools::install_github("jgm/pandoc")
-# install_github("sachsmc/rclinicaltrials")
-library(rclinicaltrials)
-library(knitr)
-```
-
 ## Introduction
 
 This is document which shows the summary information from ClinicalTrials.gov <http://clinicaltrials.gov>. This document is built for the EQUATOR Network. 
+
+
+### Install Packages and Set-up
+
+First we install and load the packages that we need to get data from the clincial trials API.
+```{r setup, message=FALSE}
+## install packages
+# install.packages("devtools")
+# install_github("sachsmc/rclinicaltrials")
+
+# load packages
+library(devtools)
+library(rclinicaltrials)
+library(knitr)
+
+# set-up
+knitr::opts_chunk$set(echo = TRUE)
+chooseCRANmirror(graphics=FALSE, ind=1)
+```
+
 
 
 ## Number of Trials
@@ -50,6 +59,13 @@ clinicaltrials_count(query = c("recr=Completed", "ALL"))
 The number of new trials posted in 2018 is: 
 ```{r new trials 2018}
 clinicaltrials_count(query = c("rcv_s=01/01/2018", "rcv_e=12/31/2018"))
+```
+
+
+## New Trials in 2019
+The number of new trials posted in 2019 is: 
+```{r new trials 2019}
+clinicaltrials_count(query = c("rcv_s=01/01/2019", "rcv_e=12/31/2019"))
 ```
 
 

@@ -1,0 +1,53 @@
+---
+title: "Identifying Systematic Reviews from PubMed"
+author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
+date: "28 May 2019"
+output: html_document
+---
+
+## Introduction
+
+This is document which shows the summary information from ClinicalTrials.gov <http://clinicaltrials.gov>. This document is built for the EQUATOR Network. 
+
+
+
+### Install packages & Set-Up
+First we install and load the packages that we need to get data from the PubMed API.
+```{r setup, include=FALSE}
+## install and load libraries
+# install.packages("rentrez")
+library(rentrez)
+
+# set up
+knitr::opts_chunk$set(echo = TRUE)
+chooseCRANmirror(graphics=FALSE, ind=1)
+```
+
+## Systematic Reviews
+
+Then we query PubMed via the API to find the number of records that are systematic reviews and have the 'human' MeSH heading attached. 
+```{r human sys rev }
+# human systematic reviews pubmed query
+sys_rev_human_query <- "(systematic review[PTYP] AND human[MESH])"
+sys_rev_human_search <- entrez_search(db = "pubmed", sys_rev_human_query, use_history = TRUE )
+sys_rev_human_search$count
+```
+
+
+
+We can visualise the number of systematic reviews published in the past 10 years.
+```{r}
+sys_rev_year <- function(year, term){
+  query <- paste(term, "AND(", year, "[PDAT])")
+  entrez_search(db="pubmed", term = query, retmax=0)$count
+}
+
+year <- 2008:2018
+papers <- sapply(year, sys_rev_year, term="(systematic review[PTYP] AND human[MESH])", USE.NAMES = FALSE)
+## produce the plots
+plot(year, papers, type='b', main="Increase in Systematic Reviews - Count per year 2008:2018")
+```
+
+
+
+Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 
