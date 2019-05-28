@@ -9,7 +9,7 @@
 <meta name="generator" content="pandoc" />
 
 
-<meta name="author" content="Alexandra Bannach-Brown" />
+<meta name="author" content="Alexandra Bannach-Brown on behalf of the EQUATOR Network" />
 
 <meta name="date" content="2019-05-23" />
 
@@ -191,7 +191,7 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Summary from ClinicalTrials.gov</h1>
-<h4 class="author">Alexandra Bannach-Brown</h4>
+<h4 class="author">Alexandra Bannach-Brown on behalf of the EQUATOR Network</h4>
 <h4 class="date">2019-05-23</h4>
 
 </div>
@@ -200,9 +200,8 @@ $(document).ready(function () {
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>This is document which shows the summary information from ClinicalTrials.gov <a href="http://clinicaltrials.gov" class="uri">http://clinicaltrials.gov</a>. This document is built for the EQUATOR Network.</p>
-</div>
-<div id="install-packages-and-set-up" class="section level2">
-<h2>Install Packages and Set-up</h2>
+<div id="install-packages-and-set-up" class="section level3">
+<h3>Install Packages and Set-up</h3>
 <p>First we install and load the packages that we need to get data from the clincial trials API.</p>
 <pre class="r"><code>## install packages
 # install.packages(&quot;devtools&quot;)
@@ -214,7 +213,9 @@ library(rclinicaltrials)
 library(knitr)
 
 # set-up
-knitr::opts_chunk$set(echo = TRUE)</code></pre>
+knitr::opts_chunk$set(echo = TRUE)
+chooseCRANmirror(graphics=FALSE, ind=1)</code></pre>
+</div>
 </div>
 <div id="number-of-trials" class="section level2">
 <h2>Number of Trials</h2>
