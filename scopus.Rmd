@@ -22,6 +22,7 @@ chooseCRANmirror(graphics=FALSE, ind=1)
 
 res <- author_df(last_name = "Muschelli", first_name = "John", verbose = FALSE, general = FALSE)
 names(res)
+length(res)
 ```
 
 ## 
