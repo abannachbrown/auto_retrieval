@@ -7,12 +7,9 @@ output: html_document
 
 ## Introduction
 
-This is document which shows the summary information from ClinicalTrials.gov <http://clinicaltrials.gov>. This document is built for the EQUATOR Network. 
+This is document which shows the summary information from PubMed <https://www.ncbi.nlm.nih.gov/pubmed> about systematic reviews. This document is built for the EQUATOR Network. 
 
 
-
-### Install packages & Set-Up
-First we install and load the packages that we need to get data from the PubMed API.
 ```{r setup, include=FALSE}
 ## install and load libraries
 # install.packages("rentrez")
@@ -23,10 +20,10 @@ knitr::opts_chunk$set(echo = TRUE)
 chooseCRANmirror(graphics=FALSE, ind=1)
 ```
 
-## Systematic Reviews
+# Systematic Reviews of Human Studies
 
-Then we query PubMed via the API to find the number of records that are systematic reviews and have the 'human' MeSH heading attached. 
-```{r human sys rev }
+Then we query PubMed via the API to find the number of records that are systematic reviews and have the 'human' MESH heading attached. 
+```{r human sys rev human}
 # human systematic reviews pubmed query
 sys_rev_human_query <- "(systematic review[PTYP] AND human[MESH])"
 sys_rev_human_search <- entrez_search(db = "pubmed", sys_rev_human_query, use_history = TRUE )
@@ -36,7 +33,7 @@ sys_rev_human_search$count
 
 
 We can visualise the number of systematic reviews published in the past 10 years.
-```{r}
+```{r sys rev human graph}
 sys_rev_year <- function(year, term){
   query <- paste(term, "AND(", year, "[PDAT])")
   entrez_search(db="pubmed", term = query, retmax=0)$count
@@ -45,9 +42,31 @@ sys_rev_year <- function(year, term){
 year <- 2008:2018
 papers <- sapply(year, sys_rev_year, term="(systematic review[PTYP] AND human[MESH])", USE.NAMES = FALSE)
 ## produce the plots
-plot(year, papers, type='b', main="Increase in Systematic Reviews - Count per year 2008:2018")
+plot(year, papers, type='b', main="Increase in Human Systematic Reviews - Count per year 2008:2018")
 ```
 
+
+# Systematic Reviews of Animal Studies
+Then we query PubMed via the API to find the number of records that are systematic reviews and 'animal' MeSH heading. 
+```{r sys rev animal}
+alt_animal_query <- "(systematic review[PTYP] AND animal[MESH] NOT human[MESH])"
+
+sys_rev_animal_search <- entrez_search(db = "pubmed", alt_animal_query, use_history = TRUE )
+sys_rev_animal_search$count
+```
+
+We can visualise the number of animal systematic reviews published in the past 10 years.
+```{r sys rev animal graph}
+sys_rev_year <- function(year, term){
+  query <- paste(term, "AND(", year, "[PDAT])")
+  entrez_search(db="pubmed", term = query, retmax=0)$count
+}
+
+year <- 2008:2018
+papers_animal <- sapply(year, sys_rev_year, term="(systematic review[PTYP] AND animal[MESH] NOT human[MESH])", USE.NAMES = FALSE)
+## produce the plots
+plot(year, papers_animal, type='b', main="Increase in Animal Systematic Reviews - Count per year 2008:2018")
+```
 
 
 Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 

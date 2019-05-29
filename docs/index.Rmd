@@ -2,4 +2,6 @@
 title: "EQUATOR Network Numbers"
 ---
 
-Hello, Website!
+This website provides up-to-dates numbers of different publication types and summary information from a number of different sources on the numbers of publications. This website is built for the EQUATOR Network. 
+
+Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 

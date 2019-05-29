@@ -10,10 +10,7 @@ output: html_document
 This is document which shows the summary information from ClinicalTrials.gov <http://clinicaltrials.gov>. This document is built for the EQUATOR Network. 
 
 
-### Install Packages and Set-up
-
-First we install and load the packages that we need to get data from the clincial trials API.
-```{r setup, message=FALSE}
+```{r setup, include=FALSE}
 ## install packages
 # install.packages("devtools")
 # install_github("sachsmc/rclinicaltrials")

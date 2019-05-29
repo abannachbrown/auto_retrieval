@@ -1,0 +1,35 @@
+---
+title: "Web of Science"
+author: "ABB"
+date: "29 May 2019"
+output: html_document
+---
+
+
+## Introduction
+
+This is document which shows the summary information from Web of Science CORE Collection about systematic reviews. This document is built for the EQUATOR Network. 
+```{r setup, include=FALSE}
+# install and load packages
+library(devtools)
+devtools::install_github("vt-arc/wosr")
+library(wosr)
+
+# set-up 
+knitr::opts_chunk$set(echo = TRUE)
+chooseCRANmirror(graphics=FALSE, ind=1)
+
+
+## ensure Sys.setenv(WOS_USERNAME = "your_username", WOS_PASSWORD = "your_password") is set
+
+sid <- auth()
+
+```
+
+## 
+
+
+
+
+
+Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 

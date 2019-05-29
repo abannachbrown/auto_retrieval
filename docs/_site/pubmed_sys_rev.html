@@ -319,20 +319,16 @@ $(document).ready(function () {
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This is document which shows the summary information from ClinicalTrials.gov <a href="http://clinicaltrials.gov" class="uri">http://clinicaltrials.gov</a>. This document is built for the EQUATOR Network.</p>
-<div id="install-packages-set-up" class="section level3">
-<h3>Install packages &amp; Set-Up</h3>
-<p>First we install and load the packages that we need to get data from the PubMed API.</p>
+<p>This is document which shows the summary information from PubMed <a href="https://www.ncbi.nlm.nih.gov/pubmed" class="uri">https://www.ncbi.nlm.nih.gov/pubmed</a> about systematic reviews. This document is built for the EQUATOR Network.</p>
 </div>
-</div>
-<div id="systematic-reviews" class="section level2">
-<h2>Systematic Reviews</h2>
-<p>Then we query PubMed via the API to find the number of records that are systematic reviews and have the ‘human’ MeSH heading attached.</p>
+<div id="systematic-reviews-of-human-studies" class="section level1">
+<h1>Systematic Reviews of Human Studies</h1>
+<p>Then we query PubMed via the API to find the number of records that are systematic reviews and have the ‘human’ MESH heading attached.</p>
 <pre class="r"><code># human systematic reviews pubmed query
 sys_rev_human_query &lt;- &quot;(systematic review[PTYP] AND human[MESH])&quot;
 sys_rev_human_search &lt;- entrez_search(db = &quot;pubmed&quot;, sys_rev_human_query, use_history = TRUE )
 sys_rev_human_search$count</code></pre>
-<pre><code>## [1] 105461</code></pre>
+<pre><code>## [1] 105503</code></pre>
 <p>We can visualise the number of systematic reviews published in the past 10 years.</p>
 <pre class="r"><code>sys_rev_year &lt;- function(year, term){
   query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
@@ -342,12 +338,32 @@ sys_rev_human_search$count</code></pre>
 year &lt;- 2008:2018
 papers &lt;- sapply(year, sys_rev_year, term=&quot;(systematic review[PTYP] AND human[MESH])&quot;, USE.NAMES = FALSE)
 ## produce the plots
-plot(year, papers, type=&#39;b&#39;, main=&quot;Increase in Systematic Reviews - Count per year 2008:2018&quot;)</code></pre>
-<p><img src="pubmed_sys_rev_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+plot(year, papers, type=&#39;b&#39;, main=&quot;Increase in Human Systematic Reviews - Count per year 2008:2018&quot;)</code></pre>
+<p><img src="pubmed_sys_rev_files/figure-html/sys%20rev%20human%20graph-1.png" width="672" /></p>
+</div>
+<div id="systematic-reviews-of-animal-studies" class="section level1">
+<h1>Systematic Reviews of Animal Studies</h1>
+<p>Then we query PubMed via the API to find the number of records that are systematic reviews and ‘animal’ MeSH heading.</p>
+<pre class="r"><code>alt_animal_query &lt;- &quot;(systematic review[PTYP] AND animal[MESH] NOT human[MESH])&quot;
+
+sys_rev_animal_search &lt;- entrez_search(db = &quot;pubmed&quot;, alt_animal_query, use_history = TRUE )
+sys_rev_animal_search$count</code></pre>
+<pre><code>## [1] 746</code></pre>
+<p>We can visualise the number of animal systematic reviews published in the past 10 years.</p>
+<pre class="r"><code>sys_rev_year &lt;- function(year, term){
+  query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
+  entrez_search(db=&quot;pubmed&quot;, term = query, retmax=0)$count
+}
+
+year &lt;- 2008:2018
+papers_animal &lt;- sapply(year, sys_rev_year, term=&quot;(systematic review[PTYP] AND animal[MESH] NOT human[MESH])&quot;, USE.NAMES = FALSE)
+## produce the plots
+plot(year, papers_animal, type=&#39;b&#39;, main=&quot;Increase in Animal Systematic Reviews - Count per year 2008:2018&quot;)</code></pre>
+<p><img src="pubmed_sys_rev_files/figure-html/sys%20rev%20animal%20graph-1.png" width="672" /></p>
 <p>Please contact Alexandra Bannach-Brown <a href="mailto:alexandra_bannachbrown@bond.edu.au">mailto:alexandra_bannachbrown@bond.edu.au</a> if you have any questions.</p>
 </div>
 
-<p>Copyright &copy; 2016 Skynet, Inc. All rights reserved.</p>
+<p>Copyright &copy; 2019 EQUATOR Network - CC-BY-4.0.</p>
 
 
 

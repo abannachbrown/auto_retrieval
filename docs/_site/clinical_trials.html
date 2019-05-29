@@ -320,40 +320,24 @@ $(document).ready(function () {
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
 <p>This is document which shows the summary information from ClinicalTrials.gov <a href="http://clinicaltrials.gov" class="uri">http://clinicaltrials.gov</a>. This document is built for the EQUATOR Network.</p>
-<div id="install-packages-and-set-up" class="section level3">
-<h3>Install Packages and Set-up</h3>
-<p>First we install and load the packages that we need to get data from the clincial trials API.</p>
-<pre class="r"><code>## install packages
-# install.packages(&quot;devtools&quot;)
-# install_github(&quot;sachsmc/rclinicaltrials&quot;)
-
-# load packages
-library(devtools)
-library(rclinicaltrials)
-library(knitr)
-
-# set-up
-knitr::opts_chunk$set(echo = TRUE)
-chooseCRANmirror(graphics=FALSE, ind=1)</code></pre>
-</div>
 </div>
 <div id="number-of-trials" class="section level2">
 <h2>Number of Trials</h2>
 <p>The number of records in clinicaltrials.gov is:</p>
 <pre class="r"><code>clinicaltrials_count(query = &quot;ALL&quot;)</code></pre>
-<pre><code>## [1] 306651</code></pre>
+<pre><code>## [1] 306775</code></pre>
 </div>
 <div id="actively-recruiting-trials" class="section level2">
 <h2>Actively Recruiting Trials</h2>
 <p>The number of trials that are currently recruiting is:</p>
 <pre class="r"><code>clinicaltrials_count(query = c(&quot;recr=Recruiting&quot;, &quot;ALL&quot;))</code></pre>
-<pre><code>## [1] 50745</code></pre>
+<pre><code>## [1] 50762</code></pre>
 </div>
 <div id="completed-trials" class="section level2">
 <h2>Completed Trials</h2>
 <p>The number of trials that are marked as completed:</p>
 <pre class="r"><code>clinicaltrials_count(query = c(&quot;recr=Completed&quot;, &quot;ALL&quot;))</code></pre>
-<pre><code>## [1] 163759</code></pre>
+<pre><code>## [1] 163802</code></pre>
 </div>
 <div id="new-trials-in-2018" class="section level2">
 <h2>New Trials in 2018</h2>
@@ -365,11 +349,11 @@ chooseCRANmirror(graphics=FALSE, ind=1)</code></pre>
 <h2>New Trials in 2019</h2>
 <p>The number of new trials posted in 2019 is:</p>
 <pre class="r"><code>clinicaltrials_count(query = c(&quot;rcv_s=01/01/2019&quot;, &quot;rcv_e=12/31/2019&quot;))</code></pre>
-<pre><code>## [1] 13289</code></pre>
+<pre><code>## [1] 13413</code></pre>
 <p>Please contact Alexandra Bannach-Brown <a href="mailto:alexandra_bannachbrown@bond.edu.au">mailto:alexandra_bannachbrown@bond.edu.au</a> if you have any questions.</p>
 </div>
 
-<p>Copyright &copy; 2016 Skynet, Inc. All rights reserved.</p>
+<p>Copyright &copy; 2019 EQUATOR Network - CC-BY-4.0.</p>
 
 
 
