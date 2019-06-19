@@ -282,7 +282,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">EQUATOR Numbers</a>
+      <a class="navbar-brand" href="index.html">EQUATOR Summary</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -294,6 +294,9 @@ $(document).ready(function () {
 </li>
 <li>
   <a href="pubmed_sys_rev.html">Systematic Reviews</a>
+</li>
+<li>
+  <a href="PROSPERO.html">SR Protocols</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -328,7 +331,7 @@ $(document).ready(function () {
 sys_rev_human_query &lt;- &quot;(systematic review[PTYP] AND human[MESH])&quot;
 sys_rev_human_search &lt;- entrez_search(db = &quot;pubmed&quot;, sys_rev_human_query, use_history = TRUE )
 sys_rev_human_search$count</code></pre>
-<pre><code>## [1] 105503</code></pre>
+<pre><code>## [1] 106761</code></pre>
 <p>We can visualise the number of systematic reviews published in the past 10 years.</p>
 <pre class="r"><code>sys_rev_year &lt;- function(year, term){
   query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
@@ -348,7 +351,7 @@ plot(year, papers, type=&#39;b&#39;, main=&quot;Increase in Human Systematic Rev
 
 sys_rev_animal_search &lt;- entrez_search(db = &quot;pubmed&quot;, alt_animal_query, use_history = TRUE )
 sys_rev_animal_search$count</code></pre>
-<pre><code>## [1] 746</code></pre>
+<pre><code>## [1] 756</code></pre>
 <p>We can visualise the number of animal systematic reviews published in the past 10 years.</p>
 <pre class="r"><code>sys_rev_year &lt;- function(year, term){
   query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
