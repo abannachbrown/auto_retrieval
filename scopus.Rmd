@@ -21,7 +21,7 @@ chooseCRANmirror(graphics=FALSE, ind=1)
 ## rscopus::set_api_key("Your_API_key_here")
 
 res <- author_df(last_name = "Muschelli", first_name = "John", verbose = FALSE, general = FALSE)
-names(res)
+# names(res)
 length(res)
 ```
 
