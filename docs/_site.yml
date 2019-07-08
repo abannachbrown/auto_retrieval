@@ -1,6 +1,6 @@
 name: "EQUATOR Number"
 navbar:
-  title: "EQUATOR Numbers"
+  title: "EQUATOR Summary"
   left:
     - text: "Home"
       href: index.html
@@ -8,6 +8,8 @@ navbar:
       href: clinical_trials.html
     - text: "Systematic Reviews"
       href: pubmed_sys_rev.html
+    - text: "SR Protocols"
+      href: PROSPERO.html
     - text: "About"
       href: about.html
 output:
