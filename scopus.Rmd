@@ -23,6 +23,19 @@ chooseCRANmirror(graphics=FALSE, ind=1)
 res <- author_df(last_name = "Muschelli", first_name = "John", verbose = FALSE, general = FALSE)
 # names(res)
 length(res)
+
+have_api_key()
+
+# rscopus::set_api_key("XXX")
+
+
+# SCOPUS get
+if (have_api_key()) {
+res = scopus_search(query = "all(gene)", max_count = 20,
+count = 10)
+df = gen_entries_to_df(res$entries)
+head(df$df)
+}
 ```
 
 ## 
