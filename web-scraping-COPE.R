@@ -1,14 +1,21 @@
 ### webscraping
 
-#install.packages("rvest")
+# install.packages("rvest")
+# install.packages("tidyverse")
+# install.packages("XML")
+# install.packages("httr")
+# install.packages("purrr")
 
-
+## load libraries
 library(rvest)
 library(tidyverse)
-library(tidyr)
 library(XML)
 library(httr)
 library(purrr)
+
+
+
+
 
 COPE_members_URL <- "https://publicationethics.org/members"
 
@@ -48,21 +55,34 @@ journal_DF <- journal_DF %>%
 ##################### trying out a purrr map_df example FOR ALL RECORDS!!!!!! page 0 - 637 #############################################
 url_base_all <- "https://publicationethics.org/members?page="
 
-map_df(0:6, function(i) {
+## map_df transforms the input and returns a dataframe
+map_df(3:4, function(i) {
   
-  # simple but effective progress indicator
+  # simple progress indicator
   cat("boom! ")
+ 
+ all_URL <- rvest:::html_session(paste0(url_base_all, i, "&t="),
+                              user_agent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) 
+                                         AppleWebKit/537.36 (KHTML, like Gecko) 
+                                         Chrome/50.0.2661.86 Safari/537.36")
+                             #, httr::headers("User-Agent" = "Mozilla/5.0 (X11; Linux x86_64) 
+                             # AppleWebKit/537.36 (KHTML, like Gecko) 
+                             # Chrome/75.0.3770.90 Safari/537.36"),
+                             )
   
-  pg <- read_html(sprintf(url_base_all, i))
   
-  data.frame(type=gsub("\n","", html_text(html_nodes(pg, ".search-result__type"))),
-             title=gsub("\n","", html_text(html_nodes(pg, ".search-result__title"))),
-          #   journal_URL
-             info=gsub("\n","", html_text(html_nodes(pg, "dl, dt, dd"))),
+  #for each page of search results generate URL
+  page <- read_html(all_URL$url)
+  
+  data.frame(#gsub removes the extra \n html tags, html_text reads html into text, html_nodes identifies the css-selector on the "page"
+             type=gsub("\n","", html_text(html_nodes(page, ".search-result__type"))),
+             title=gsub("\n","", html_text(html_nodes(page, ".search-result__title"))),
+             info=gsub("\n","", html_text(html_nodes(page, "search-result__meta"))),
              stringsAsFactors=FALSE)
   
-}) -> journal_DF
+}) -> journal_DF ##map into this dataframe
 
+journal_DF <- NULL
 
 # convert type to factor value as there are only a select few group/type
 journal_DF$type <- as.factor(journal_DF$type)
@@ -77,8 +97,10 @@ journal_DF <- journal_DF %>%
 
 
 for( i in 0:233){
-# COPE_journals_URL <- "https://publicationethics.org/members?page=0&t=journal"
+ COPE_journals_URL <- read_html("https://publicationethics.org/members?page=0&t=journal")
 journals_LINK <- read_html(paste0("https://publicationethics.org/members?t=journal&page=", i))
+
+
 
 # journals_LINK <- read_html(COPE_journals_URL)
 
@@ -103,8 +125,12 @@ journals_info_type <- journals_LINK %>%
 
 
 ## trying to get URL but not working
-journals_info_url <- journals_LINK %>%
+journals_info_url <- COPE_journals_URL %>%
   html_nodes(".search-result__title") %>%
+  html_attr("a href")# %>%
+
+journals_info_url <- COPE_journals_URL %>%
+  # html_nodes(".search-result__title") %>%
   html_attr("href")# %>%
 
 # title
@@ -141,6 +167,18 @@ journal_DF <- journal_info_df %>%
 
 
 }
+
+
+##################### testing tripadvisor href eg ###################
+################## https://www.worldfullofdata.com/basics-web-scraping-r-rvest/ 
+
+
+tripadvisor_home <- read_html("https://www.tripadvisor.com/Restaurants-g60763-New_York_City_New_York.html")
+
+restaurant_URLs <- tripadvisor_home %>%
+  html_nodes(".property_title") %>%
+  html_attr("href")
+tripadvisor_home
 
 
 
