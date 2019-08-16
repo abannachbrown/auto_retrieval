@@ -331,7 +331,7 @@ $(document).ready(function () {
 sys_rev_human_query &lt;- &quot;(systematic review[PTYP] AND human[MESH])&quot;
 sys_rev_human_search &lt;- entrez_search(db = &quot;pubmed&quot;, sys_rev_human_query, use_history = TRUE )
 sys_rev_human_search$count</code></pre>
-<pre><code>## [1] 106761</code></pre>
+<pre><code>## [1] 106799</code></pre>
 <p>We can visualise the number of systematic reviews published in the past 10 years.</p>
 <pre class="r"><code>sys_rev_year &lt;- function(year, term){
   query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
@@ -351,7 +351,7 @@ plot(year, papers, type=&#39;b&#39;, main=&quot;Increase in Human Systematic Rev
 
 sys_rev_animal_search &lt;- entrez_search(db = &quot;pubmed&quot;, alt_animal_query, use_history = TRUE )
 sys_rev_animal_search$count</code></pre>
-<pre><code>## [1] 756</code></pre>
+<pre><code>## [1] 757</code></pre>
 <p>We can visualise the number of animal systematic reviews published in the past 10 years.</p>
 <pre class="r"><code>sys_rev_year &lt;- function(year, term){
   query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
