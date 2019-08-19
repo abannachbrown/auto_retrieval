@@ -31,7 +31,6 @@ sys_rev_human_search$count
 ```
 
 
-
 We can visualise the number of systematic reviews published in the past 10 years.
 ```{r sys rev human graph}
 sys_rev_year <- function(year, term){

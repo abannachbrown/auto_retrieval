@@ -13,10 +13,11 @@ This is document which shows the summary information from ClinicalTrials.gov <ht
 ```{r setup, include=FALSE}
 ## install packages
 # install.packages("devtools")
+# library(devtools)
 # install_github("sachsmc/rclinicaltrials")
 
 # load packages
-library(devtools)
+
 library(rclinicaltrials)
 library(knitr)
 
@@ -64,6 +65,53 @@ The number of new trials posted in 2019 is:
 ```{r new trials 2019}
 clinicaltrials_count(query = c("rcv_s=01/01/2019", "rcv_e=12/31/2019"))
 ```
+
+
+## Trials Registered in the Past 10 years
+
+```{r}
+##### Initial Values #####
+startYear <- 2009
+endYear <- 2019
+
+##### Trials over time #####
+months <- 1:12
+years <- startYear:endYear
+numOfTrials <- NULL
+totalTrials <- NULL
+startDate <- NULL
+
+for(j in 1:length(years)){
+
+    for(i in 1:length(months)){
+    
+        x <- clinicaltrials_count(query = c(paste("rcv_e=",months[i],"/01/",years[j],sep="")))
+        
+        numOfTrials <- c(numOfTrials,x)
+        totalTrials <- c(totalTrials,sum(numOfTrials))
+        startDate <- c(startDate,paste(months[i],"/01/",years[j],sep=""))
+        
+        
+    }
+
+}
+
+##### Make a dataset #####
+
+## Put fields together
+ctOverTime <- data.frame(startDate,numOfTrials)
+
+## Convert start date to a date field
+ctOverTime$startDate <- as.character(ctOverTime$startDate)
+charLength <- nchar(ctOverTime$startDate) == 9
+# cbind(ctOverTime$startDate,nchar(ctOverTime$startDate),charLength)
+ctOverTime$startDate <- ifelse(charLength == TRUE,paste("0",ctOverTime$startDate,sep=""),
+                               ctOverTime$startDate)
+
+## Save dataset
+save(ctOverTime, file = "Trials Over Time.Rdata")
+```
+
 
 
 Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 

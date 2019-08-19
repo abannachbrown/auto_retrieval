@@ -7,28 +7,22 @@ output: html_document
 
 ## Introduction
 
-This is document which shows the summary information from [PROSPERO] (https://www.crd.york.ac.uk/prospero/) about systematic review registrations. This document is built for the EQUATOR Network. 
+This is document which shows the summary information from PROSPERO (https://www.crd.york.ac.uk/prospero/) about systematic review registrations. This document is built for the EQUATOR Network. 
 
 ```{r setup, include=FALSE}
 ## install and load libraries
-
-
-
 # set up
 knitr::opts_chunk$set(echo = TRUE)
 chooseCRANmirror(graphics=FALSE, ind=1)
 ```
 
 ## Data 
-Data from PROSPERO is kindly provided by Ruth at PROSPERO. 
+Data from PROSPERO is kindly provided by Ruth Walker at PROSPERO. 
 
 ```{r}
 # load csv files
-
 prospero_all <- read.csv("~/Documents/auto_retrieval/prospero_numbers_all.csv", sep = ",", header=TRUE)
-
 plot(prospero_all$Year, prospero_all$Number_regos, type='b', main = "All systematic review registrations on PROSPERO")
-
 ```
 
 
@@ -36,7 +30,6 @@ plot(prospero_all$Year, prospero_all$Number_regos, type='b', main = "All systema
 ```{r}
 # load csv
 prospero_clinical <- read.csv("~/Documents/auto_retrieval/prospero_numbers_clinical.csv", sep = ",", header = TRUE)
-
 # plot
 plot(prospero_clinical$Year, prospero_clinical$Number_regos, type='b', main = "Clinical & General Systematic Review Registrations on PROSPERO")
 ```
@@ -45,7 +38,6 @@ plot(prospero_clinical$Year, prospero_clinical$Number_regos, type='b', main = "C
 ```{r}
 # load csv
 prospero_animal <- read.csv("~/Documents/auto_retrieval/prospero_numbers_animal.csv", sep = ",", header = TRUE)
-
 # plot
 plot(prospero_animal$Year, prospero_animal$Number_regos, type='b', main = "Animal Systematic Review Registrations on PROSPERO")
 ```
@@ -55,9 +47,10 @@ plot(prospero_animal$Year, prospero_animal$Number_regos, type='b', main = "Anima
 ```{r}
 # load csv
 prospero_cochrane <- read.csv("~/Documents/auto_retrieval/prospero_numbers_cochrane.csv", sep = ",", header = TRUE)
-
 # plot
 plot(prospero_cochrane$Year, prospero_cochrane$Number_regos, type='b', main = "Cochrane Systematic Review Registrations on PROSPERO")
 ```
 
 
+
+Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 
