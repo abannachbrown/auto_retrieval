@@ -110,6 +110,15 @@ ctOverTime$startDate <- ifelse(charLength == TRUE,paste("0",ctOverTime$startDate
 
 ## Save dataset
 save(ctOverTime, file = "Trials Over Time.Rdata")
+
+
+#### plot
+ctOverTime$startDate <- as.Date(ctOverTime$startDate,"%m/%d/%Y")
+with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Trials Over Time",
+                      xlab = "Time",ylab="Trials"))
+
+
+
 ```
 
 
