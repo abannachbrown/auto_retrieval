@@ -70,6 +70,9 @@ clinicaltrials_count(query = c("rcv_s=01/01/2019", "rcv_e=12/31/2019"))
 ## Trials Registered in the Past 10 years
 
 ```{r}
+#### code taken from Billy Caughey tutorial ##
+#### 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
+
 ##### Initial Values #####
 startYear <- 2009
 endYear <- 2019
@@ -85,11 +88,11 @@ for(j in 1:length(years)){
 
     for(i in 1:length(months)){
     
-        x <- clinicaltrials_count(query = c(paste("rcv_e=",months[i],"/01/",years[j],sep="")))
+        x <- clinicaltrials_count(query = c(paste("rcv_e=", months[i], "/01/", years[j], sep="")))
         
         numOfTrials <- c(numOfTrials,x)
         totalTrials <- c(totalTrials,sum(numOfTrials))
-        startDate <- c(startDate,paste(months[i],"/01/",years[j],sep=""))
+        startDate <- c(startDate,paste(months[i], "01/", years[j],sep=""))
         
         
     }
@@ -109,15 +112,13 @@ ctOverTime$startDate <- ifelse(charLength == TRUE,paste("0",ctOverTime$startDate
                                ctOverTime$startDate)
 
 ## Save dataset
-save(ctOverTime, file = "Trials Over Time.Rdata")
+# save(ctOverTime, file = "Trials Over Time.Rdata")
 
 
 #### plot
 ctOverTime$startDate <- as.Date(ctOverTime$startDate,"%m/%d/%Y")
-with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Trials Over Time",
+with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Trials Registered Over Time",
                       xlab = "Time",ylab="Trials"))
-
-
 
 ```
 
