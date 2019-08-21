@@ -14,10 +14,48 @@ library(httr)
 library(purrr)
 
 
+install.packages("robotstxt")
+library(robotstxt)
+library(jsonlite)
 
+## check what allowed and dissallowed to access on the COPE website
+robtext <- robotstxt(domain = "https://publicationethics.org/")
+
+robtext$comments %>% tbl_df
+robtext$permissions
+
+
+
+## check if members subdomain is allowed to be scraped
+print(paths_allowed("https://publicationethics.org/members"))
+
+# check crawl delay
+print(robtext$crawl_delay)
+# 10 secs
+
+
+
+## sleep crawl delay function
+nytnyt <- function(periods = c(1, 1.5)){
+  tictoc <- runif(1, periods[1], periods[2])
+  cat(paste0(Sys.time()), "sleeping for", round(tictoc,2), "seconds\n")
+  Sys.sleep(tictoc)
+  
+}
+
+
+## check for IP
+get_ip <- function(){
+  read_html("https://api.ipify.org/?format=json") %>%
+  html_text(., trim = T) %>%
+  jsonlite::fromJSON(.)
+}
 
 
 COPE_members_URL <- "https://publicationethics.org/members"
+
+COPE_journals_URL %>% 
+  html_nodes(".search-result__title")
 
 
 #################################################################################################
@@ -34,7 +72,7 @@ map_df(0:233, function(i) {
   data.frame(type=gsub("\n","", html_text(html_nodes(pg, ".search-result__type"))),
              title=gsub("\n","", html_text(html_nodes(pg, ".search-result__title"))),
              info=gsub("\n","", html_text(html_nodes(pg, ".search-result__meta"))),
-             stringsAsFactors=FALSE)
+             stringsAsFactors=FALSE) 
   
 }) -> journal_DF
 
@@ -48,6 +86,51 @@ journal_DF <- journal_DF %>%
   separate(info, c("editor", "country", "publisher"), "                  ")
 
 #######################
+#### try one more time
+
+
+pages_total <- seq(0, 3) #233
+
+#collect page function
+
+collect_pg <- function(x){
+  read_html(paste0("https://publicationethics.org/members?page=", x ,
+                   "&t=")) %>% 
+    
+    html_nodes(".search-result__type") %>%
+    html_text() 
+}
+
+
+
+all_pages <- list()
+
+for (i in 1:length(pages_total)){
+  cat("[",paste0(Sys.time()), "] Now collecting page ", i, "\n")
+  
+  all_pages[[i]] <- collect_pg(pages_total[i]) # %>%
+    
+   # nytnyt(periods = c(10, 11))
+  
+  # data.frame(#gsub removes the extra \n html tags, html_text reads html into text, html_nodes identifies the css-selector on the "page"
+  #   type=gsub("\n","", html_text(html_nodes(all_pages, ".search-result__type"))),
+  #   title=gsub("\n","", html_text(html_nodes(all_pages, ".search-result__title"))),
+  #   info=gsub("\n","", html_text(html_nodes(all_pages, "search-result__meta"))),
+  #   stringsAsFactors=FALSE)-> journal_DF
+  
+  
+}
+
+test <-all_pages %>% map_df(~as.list(.))
+
+# all_pages <- as.data.frame(all_pages)
+
+
+data.frame(#gsub removes the extra \n html tags, html_text reads html into text, html_nodes identifies the css-selector on the "page"
+  type=gsub("\n","", html_text(html_nodes(all_pages, ".search-result__type"))),
+  title=gsub("\n","", html_text(html_nodes(all_pages, ".search-result__title"))),
+  info=gsub("\n","", html_text(html_nodes(all_pages, "search-result__meta"))),
+  stringsAsFactors=FALSE)-> journal_DF
 
 
 ############################### ALL RECORDS ########################################################
@@ -61,6 +144,8 @@ map_df(3:4, function(i) {
   # simple progress indicator
   cat("boom! ")
  
+  for (i in 1:3) {
+  
  all_URL <- rvest:::html_session(paste0(url_base_all, i, "&t="),
                               user_agent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) 
                                          AppleWebKit/537.36 (KHTML, like Gecko) 
@@ -68,17 +153,30 @@ map_df(3:4, function(i) {
                              #, httr::headers("User-Agent" = "Mozilla/5.0 (X11; Linux x86_64) 
                              # AppleWebKit/537.36 (KHTML, like Gecko) 
                              # Chrome/75.0.3770.90 Safari/537.36"),
-                             )
-  
-  
+                             ) 
+
+ 
+ 
+ # %>% read_html() %>%
+ #   as.character()
+ #   cat
+
+
+ # nytnyt(periods = c(10, 11))
+ 
   #for each page of search results generate URL
-  page <- read_html(all_URL$url)
+  page <- all_URL %>%
+        nytnyt(periods = c(10, 11)) %>%
+      read_html() %>%
+        cat
+  
+  }
   
   data.frame(#gsub removes the extra \n html tags, html_text reads html into text, html_nodes identifies the css-selector on the "page"
              type=gsub("\n","", html_text(html_nodes(page, ".search-result__type"))),
              title=gsub("\n","", html_text(html_nodes(page, ".search-result__title"))),
              info=gsub("\n","", html_text(html_nodes(page, "search-result__meta"))),
-             stringsAsFactors=FALSE)
+             stringsAsFactors=FALSE)-> journal_DF
   
 }) -> journal_DF ##map into this dataframe
 
@@ -118,14 +216,14 @@ journals_LINK <- read_html(paste0("https://publicationethics.org/members?t=journ
 
 ## extract the exact elements of search results from 
 # type - journal or publisher
-journals_info_type <- journals_LINK %>%
+journals_info_type <- page %>%
   html_nodes(".search-result__type") %>%
   html_text()#%>%
 #  as.data.frame()
 
 
 ## trying to get URL but not working
-journals_info_url <- COPE_journals_URL %>%
+journals_info_url <- page %>%
   html_nodes(".search-result__title") %>%
   html_attr("a href")# %>%
 
