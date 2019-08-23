@@ -7,7 +7,8 @@ output: html_document
 
 ## Introduction
 
-This is document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank" ClinicalTrials.gov</a>. 
+This is document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank" ClinicalTrials.gov </a>. 
+
 
 
 ```{r setup, include=FALSE}
@@ -68,7 +69,7 @@ clinicaltrials_count(query = c("rcv_s=01/01/2019", "rcv_e=12/31/2019"))
 
 
 ## Trials Registered in the Past 10 years
-
+Graph showing the increase in clinical intervention trials published in the last
 ```{r over time}
 #### code adapted from Billy Caughey tutorial 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
 

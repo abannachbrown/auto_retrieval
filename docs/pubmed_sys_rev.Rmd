@@ -20,9 +20,9 @@ knitr::opts_chunk$set(echo = TRUE)
 chooseCRANmirror(graphics=FALSE, ind=1)
 ```
 
-# Systematic Reviews of Human Studies
+## Systematic Reviews of Human Studies
 
-Then we query PubMed via the API to find the number of records that are systematic reviews and have the 'human' MESH heading attached. 
+We query PubMed via the API to find the number of records that are systematic reviews and have the 'human' MESH heading attached. 
 ```{r human sys rev human}
 # human systematic reviews pubmed query
 sys_rev_human_query <- "(systematic review[PTYP] AND human[MESH])"
@@ -41,11 +41,11 @@ sys_rev_year <- function(year, term){
 year <- 2008:2018
 papers <- sapply(year, sys_rev_year, term="(systematic review[PTYP] AND human[MESH])", USE.NAMES = FALSE)
 ## produce the plots
-plot(year, papers, type='b', main="Increase in Human Systematic Reviews - Count per year 2008:2018")
+plot(year, papers, type='b', main="Increase in Human Systematic Reviews - Count per year 2008:2018", xlab = "Year",ylab="Articles")
 ```
 
 
-# Systematic Reviews of Animal Studies
+## Systematic Reviews of Animal Studies
 Then we query PubMed via the API to find the number of records that are systematic reviews and 'animal' MeSH heading. 
 ```{r sys rev animal}
 alt_animal_query <- "(systematic review[PTYP] AND animal[MESH] NOT human[MESH])"
@@ -64,7 +64,7 @@ sys_rev_year <- function(year, term){
 year <- 2008:2018
 papers_animal <- sapply(year, sys_rev_year, term="(systematic review[PTYP] AND animal[MESH] NOT human[MESH])", USE.NAMES = FALSE)
 ## produce the plots
-plot(year, papers_animal, type='b', main="Increase in Animal Systematic Reviews - Count per year 2008:2018")
+plot(year, papers_animal, type='b', main="Increase in Animal Systematic Reviews - Count per year 2008:2018", xlab = "Year",ylab="Articles")
 ```
 
 

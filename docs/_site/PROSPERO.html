@@ -311,14 +311,14 @@ $(document).ready(function () {
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This is document which shows the summary information from PROSPERO (<a href="https://www.crd.york.ac.uk/prospero/" class="uri">https://www.crd.york.ac.uk/prospero/</a>) about systematic review registrations. This document is built for the EQUATOR Network.</p>
+<p>This is document which shows the summary information from <a href="https://www.crd.york.ac.uk/prospero/">PROSPERO</a> about systematic review registrations. This document is built for the EQUATOR Network.</p>
 </div>
 <div id="data" class="section level2">
 <h2>Data</h2>
 <p>Data from PROSPERO is kindly provided by Ruth Walker at PROSPERO.</p>
 <pre class="r"><code># load csv files
 prospero_all &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_all.csv&quot;, sep = &quot;,&quot;, header=TRUE)
-plot(prospero_all$Year, prospero_all$Number_regos, type=&#39;b&#39;, main = &quot;All systematic review registrations on PROSPERO&quot;)</code></pre>
+plot(prospero_all$Year, prospero_all$Number_regos, type=&#39;b&#39;, main = &quot;All systematic review registrations on PROSPERO&quot;, xlab = &quot;Year&quot;, ylab=&quot;Registrations&quot;)</code></pre>
 <p><img src="PROSPERO_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>
 <div id="clinical-and-general-registrations" class="section level2">
@@ -326,12 +326,12 @@ plot(prospero_all$Year, prospero_all$Number_regos, type=&#39;b&#39;, main = &quo
 <pre class="r"><code># load csv
 prospero_clinical &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_clinical.csv&quot;, sep = &quot;,&quot;, header = TRUE)
 # plot
-plot(prospero_clinical$Year, prospero_clinical$Number_regos, type=&#39;b&#39;, main = &quot;Clinical &amp; General Systematic Review Registrations on PROSPERO&quot;)</code></pre>
+plot(prospero_clinical$Year, prospero_clinical$Number_regos, type=&#39;b&#39;, main = &quot;Clinical &amp; General Systematic Review Registrations on PROSPERO&quot;, xlab = &quot;Year&quot;, ylab=&quot;Registrations&quot;)</code></pre>
 <p><img src="PROSPERO_files/figure-html/unnamed-chunk-2-1.png" width="672" /> ## Animal Systematic Review Registrations</p>
 <pre class="r"><code># load csv
 prospero_animal &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_animal.csv&quot;, sep = &quot;,&quot;, header = TRUE)
 # plot
-plot(prospero_animal$Year, prospero_animal$Number_regos, type=&#39;b&#39;, main = &quot;Animal Systematic Review Registrations on PROSPERO&quot;)</code></pre>
+plot(prospero_animal$Year, prospero_animal$Number_regos, type=&#39;b&#39;, main = &quot;Animal Systematic Review Registrations on PROSPERO&quot;, xlab = &quot;Year&quot;, ylab=&quot;Registrations&quot;)</code></pre>
 <p><img src="PROSPERO_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="cochrane-systematic-review-registrations" class="section level2">
@@ -339,7 +339,7 @@ plot(prospero_animal$Year, prospero_animal$Number_regos, type=&#39;b&#39;, main 
 <pre class="r"><code># load csv
 prospero_cochrane &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_cochrane.csv&quot;, sep = &quot;,&quot;, header = TRUE)
 # plot
-plot(prospero_cochrane$Year, prospero_cochrane$Number_regos, type=&#39;b&#39;, main = &quot;Cochrane Systematic Review Registrations on PROSPERO&quot;)</code></pre>
+plot(prospero_cochrane$Year, prospero_cochrane$Number_regos, type=&#39;b&#39;, main = &quot;Cochrane Systematic Review Registrations on PROSPERO&quot;, xlab = &quot;Year&quot;, ylab=&quot;Registrations&quot;)</code></pre>
 <p><img src="PROSPERO_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions.</p>
 </div>

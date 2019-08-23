@@ -313,9 +313,9 @@ $(document).ready(function () {
 <h2>Introduction</h2>
 <p>This is document which shows the summary information from <a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank" PubMed</a> about the number of systematic reviews indexed.</p>
 </div>
-<div id="systematic-reviews-of-human-studies" class="section level1">
-<h1>Systematic Reviews of Human Studies</h1>
-<p>Then we query PubMed via the API to find the number of records that are systematic reviews and have the ‘human’ MESH heading attached.</p>
+<div id="systematic-reviews-of-human-studies" class="section level2">
+<h2>Systematic Reviews of Human Studies</h2>
+<p>We query PubMed via the API to find the number of records that are systematic reviews and have the ‘human’ MESH heading attached.</p>
 <pre class="r"><code># human systematic reviews pubmed query
 sys_rev_human_query &lt;- &quot;(systematic review[PTYP] AND human[MESH])&quot;
 sys_rev_human_search &lt;- entrez_search(db = &quot;pubmed&quot;, sys_rev_human_query, use_history = TRUE )
@@ -330,11 +330,11 @@ sys_rev_human_search$count</code></pre>
 year &lt;- 2008:2018
 papers &lt;- sapply(year, sys_rev_year, term=&quot;(systematic review[PTYP] AND human[MESH])&quot;, USE.NAMES = FALSE)
 ## produce the plots
-plot(year, papers, type=&#39;b&#39;, main=&quot;Increase in Human Systematic Reviews - Count per year 2008:2018&quot;)</code></pre>
+plot(year, papers, type=&#39;b&#39;, main=&quot;Increase in Human Systematic Reviews - Count per year 2008:2018&quot;, xlab = &quot;Year&quot;,ylab=&quot;Articles&quot;)</code></pre>
 <p><img src="pubmed_sys_rev_files/figure-html/sys%20rev%20human%20graph-1.png" width="672" /></p>
 </div>
-<div id="systematic-reviews-of-animal-studies" class="section level1">
-<h1>Systematic Reviews of Animal Studies</h1>
+<div id="systematic-reviews-of-animal-studies" class="section level2">
+<h2>Systematic Reviews of Animal Studies</h2>
 <p>Then we query PubMed via the API to find the number of records that are systematic reviews and ‘animal’ MeSH heading.</p>
 <pre class="r"><code>alt_animal_query &lt;- &quot;(systematic review[PTYP] AND animal[MESH] NOT human[MESH])&quot;
 
@@ -350,7 +350,7 @@ sys_rev_animal_search$count</code></pre>
 year &lt;- 2008:2018
 papers_animal &lt;- sapply(year, sys_rev_year, term=&quot;(systematic review[PTYP] AND animal[MESH] NOT human[MESH])&quot;, USE.NAMES = FALSE)
 ## produce the plots
-plot(year, papers_animal, type=&#39;b&#39;, main=&quot;Increase in Animal Systematic Reviews - Count per year 2008:2018&quot;)</code></pre>
+plot(year, papers_animal, type=&#39;b&#39;, main=&quot;Increase in Animal Systematic Reviews - Count per year 2008:2018&quot;, xlab = &quot;Year&quot;,ylab=&quot;Articles&quot;)</code></pre>
 <p><img src="pubmed_sys_rev_files/figure-html/sys%20rev%20animal%20graph-1.png" width="672" /></p>
 <p>Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions.</p>
 </div>
