@@ -7,7 +7,7 @@ output: html_document
 
 ## Introduction
 
-This is document which shows the summary information from PubMed <https://www.ncbi.nlm.nih.gov/pubmed> about systematic reviews. This document is built for the EQUATOR Network. 
+This is document which shows the summary information from <a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank" PubMed</a> about the number of systematic reviews indexed. 
 
 
 ```{r setup, include=FALSE}
@@ -68,4 +68,4 @@ plot(year, papers_animal, type='b', main="Increase in Animal Systematic Reviews 
 ```
 
 
-Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 
+Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions. 

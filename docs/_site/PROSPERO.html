@@ -7,11 +7,12 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="Alexandra Bannach-Brown on behalf of the EQUATOR Network" />
 
-<meta name="date" content="2019-05-16" />
+<meta name="date" content="2019-08-23" />
 
 <title>PROSPERO</title>
 
@@ -247,18 +248,6 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -296,7 +285,7 @@ $(document).ready(function () {
   <a href="pubmed_sys_rev.html">Systematic Reviews</a>
 </li>
 <li>
-  <a href="PROSPERO.html">SR Protocols</a>
+  <a href="PROSPERO.html">Systematic Review Protocols</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -315,22 +304,20 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">PROSPERO</h1>
 <h4 class="author">Alexandra Bannach-Brown on behalf of the EQUATOR Network</h4>
-<h4 class="date">16 May 2019</h4>
+<h4 class="date">23 Aug 2019</h4>
 
 </div>
 
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This is document which shows the summary information from [PROSPERO] (<a href="https://www.crd.york.ac.uk/prospero/" class="uri">https://www.crd.york.ac.uk/prospero/</a>) about systematic review registrations. This document is built for the EQUATOR Network.</p>
+<p>This is document which shows the summary information from PROSPERO (<a href="https://www.crd.york.ac.uk/prospero/" class="uri">https://www.crd.york.ac.uk/prospero/</a>) about systematic review registrations. This document is built for the EQUATOR Network.</p>
 </div>
 <div id="data" class="section level2">
 <h2>Data</h2>
-<p>Data from PROSPERO is kindly provided by Ruth at PROSPERO.</p>
+<p>Data from PROSPERO is kindly provided by Ruth Walker at PROSPERO.</p>
 <pre class="r"><code># load csv files
-
 prospero_all &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_all.csv&quot;, sep = &quot;,&quot;, header=TRUE)
-
 plot(prospero_all$Year, prospero_all$Number_regos, type=&#39;b&#39;, main = &quot;All systematic review registrations on PROSPERO&quot;)</code></pre>
 <p><img src="PROSPERO_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>
@@ -338,13 +325,11 @@ plot(prospero_all$Year, prospero_all$Number_regos, type=&#39;b&#39;, main = &quo
 <h2>Clinical and General Registrations</h2>
 <pre class="r"><code># load csv
 prospero_clinical &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_clinical.csv&quot;, sep = &quot;,&quot;, header = TRUE)
-
 # plot
 plot(prospero_clinical$Year, prospero_clinical$Number_regos, type=&#39;b&#39;, main = &quot;Clinical &amp; General Systematic Review Registrations on PROSPERO&quot;)</code></pre>
 <p><img src="PROSPERO_files/figure-html/unnamed-chunk-2-1.png" width="672" /> ## Animal Systematic Review Registrations</p>
 <pre class="r"><code># load csv
 prospero_animal &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_animal.csv&quot;, sep = &quot;,&quot;, header = TRUE)
-
 # plot
 plot(prospero_animal$Year, prospero_animal$Number_regos, type=&#39;b&#39;, main = &quot;Animal Systematic Review Registrations on PROSPERO&quot;)</code></pre>
 <p><img src="PROSPERO_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
@@ -353,13 +338,13 @@ plot(prospero_animal$Year, prospero_animal$Number_regos, type=&#39;b&#39;, main 
 <h2>Cochrane Systematic Review Registrations</h2>
 <pre class="r"><code># load csv
 prospero_cochrane &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_cochrane.csv&quot;, sep = &quot;,&quot;, header = TRUE)
-
 # plot
 plot(prospero_cochrane$Year, prospero_cochrane$Number_regos, type=&#39;b&#39;, main = &quot;Cochrane Systematic Review Registrations on PROSPERO&quot;)</code></pre>
 <p><img src="PROSPERO_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions.</p>
 </div>
 
-<p>Copyright &copy; 2019 EQUATOR Network - CC-BY-4.0.</p>
+<p>Copyright &copy; 2019 EQUATOR Network </p>
 
 
 
@@ -377,6 +362,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

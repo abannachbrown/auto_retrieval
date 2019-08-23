@@ -53,4 +53,4 @@ plot(prospero_cochrane$Year, prospero_cochrane$Number_regos, type='b', main = "C
 
 
 
-Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 
+Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions. 

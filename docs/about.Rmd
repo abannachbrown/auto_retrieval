@@ -2,8 +2,10 @@
 title: "About This Website"
 ---
 
-This is website provides summary information from a number of different sources on the numbers of publications. This website is built for the EQUATOR Network <http://www.equator-network.org/>. 
+EQUATOR - Enhancing the QUAlity and Transparency Of health Research
 
-This website is hosted by the Centre for Research in Evidence-Based Practice at Bond University, for more information please visit this website <http://www.crebp.net.au/research/australasian-equator-centre/>.
+This is website provides summary information from a number of different sources on the numbers of publications. This website is built for the <a href="http://www.equator-network.org/" target="_blank" EQUATOR Network</a>. 
 
-Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 
+This website is hosted by the Institute for Evidence-Based Healthcare at Bond University, for more information please visit our <a href="https://iebh.bond.edu.au/our-research/australasian-equator-centre" target="_blank" website</a>. 
+
+Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions. 

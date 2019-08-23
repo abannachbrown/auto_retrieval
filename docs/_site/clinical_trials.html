@@ -12,7 +12,7 @@
 
 <meta name="author" content="Alexandra Bannach-Brown on behalf of the EQUATOR Network" />
 
-<meta name="date" content="2019-05-23" />
+<meta name="date" content="2019-08-23" />
 
 <title>Summary from ClinicalTrials.gov</title>
 
@@ -285,7 +285,7 @@ $(document).ready(function () {
   <a href="pubmed_sys_rev.html">Systematic Reviews</a>
 </li>
 <li>
-  <a href="PROSPERO.html">SR Protocols</a>
+  <a href="PROSPERO.html">Systematic Review Protocols</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -304,14 +304,14 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Summary from ClinicalTrials.gov</h1>
 <h4 class="author">Alexandra Bannach-Brown on behalf of the EQUATOR Network</h4>
-<h4 class="date">2019-05-23</h4>
+<h4 class="date">23 Aug 2019</h4>
 
 </div>
 
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This is document which shows the summary information from ClinicalTrials.gov <a href="http://clinicaltrials.gov" class="uri">http://clinicaltrials.gov</a>. This document is built for the EQUATOR Network.</p>
+<p>This is document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank" ClinicalTrials.gov</a>.</p>
 </div>
 <div id="total-number-of-trials" class="section level2">
 <h2>Total Number of Trials</h2>
@@ -345,18 +345,11 @@ $(document).ready(function () {
 </div>
 <div id="trials-registered-in-the-past-10-years" class="section level2">
 <h2>Trials Registered in the Past 10 years</h2>
-<pre class="r"><code>#### code taken from Billy Caughey tutorial ##
-#### 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
+<pre class="r"><code>#### code adapted from Billy Caughey tutorial 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
 
 ##### Initial Values #####
 startYear &lt;- 2009
 endYear &lt;- 2019
-
-##### Trials over time #####
-##### Initial Values #####
-startYear &lt;- 2009
-endYear &lt;- 2019
-
 ##### Trials over time #####
 months &lt;- 1:12
 years &lt;- startYear:endYear
@@ -365,7 +358,6 @@ totalTrials &lt;- NULL
 startDate &lt;- NULL
 
 for(j in 1:length(years)){
-  
   for(i in 1:length(months)){
     
     x &lt;- clinicaltrials_count(query = c(&quot;type=Intr&quot;, 
@@ -375,13 +367,10 @@ for(j in 1:length(years)){
     numOfTrials &lt;- c(numOfTrials,x)
     totalTrials &lt;- c(totalTrials,sum(numOfTrials))
     startDate &lt;- c(startDate,paste(months[i],&quot;/01/&quot;,years[j],sep=&quot;&quot;))
-    
-    
   }
   
 }
 
-##### Make a dataset #####
 
 ## Put fields together
 ctOverTime &lt;- data.frame(startDate,numOfTrials)
@@ -392,18 +381,14 @@ charLength &lt;- nchar(ctOverTime$startDate) == 9
 # cbind(ctOverTime$startDate,nchar(ctOverTime$startDate),charLength)
 ctOverTime$startDate &lt;- ifelse(charLength == TRUE,paste(&quot;0&quot;,ctOverTime$startDate,sep=&quot;&quot;),
                                ctOverTime$startDate)
-## Save dataset
-# save(ctOverTime, file = &quot;Trials Over Time.Rdata&quot;)
-
 #### plot
 ctOverTime$startDate &lt;- as.Date(ctOverTime$startDate,&quot;%m/%d/%Y&quot;)
-with(ctOverTime, plot(numOfTrials ~ startDate, type = &quot;l&quot;,main=&quot;Number of Intervention Trials 2009-2019&quot;,
-                      xlab = &quot;Time&quot;,ylab=&quot;Trials&quot;))</code></pre>
-<p><img src="clinical_trials_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
-<p>Please contact Alexandra Bannach-Brown <a href="mailto:alexandra_bannachbrown@bond.edu.au">mailto:alexandra_bannachbrown@bond.edu.au</a> if you have any questions.</p>
+with(ctOverTime, plot(numOfTrials ~ startDate, type = &quot;l&quot;,main=&quot;Number of Intervention Trials 2009-2019&quot;, xlab = &quot;Time&quot;,ylab=&quot;Trials&quot;))</code></pre>
+<p><img src="clinical_trials_files/figure-html/over%20time-1.png" width="672" /></p>
+<p>Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions.</p>
 </div>
 
-<p>Copyright &copy; 2019 EQUATOR Network - CC-BY-4.0.</p>
+<p>Copyright &copy; 2019 EQUATOR Network </p>
 
 
 

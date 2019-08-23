@@ -1,13 +1,13 @@
 ---
 title: "Summary from ClinicalTrials.gov"
 author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
-date: 2019-08-23
+date: "23 Aug 2019"
 output: html_document
 ---
 
 ## Introduction
 
-This is document which shows the summary information from ClinicalTrials.gov <http://clinicaltrials.gov>. This document is built for the EQUATOR Network. 
+This is document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank" ClinicalTrials.gov</a>. 
 
 
 ```{r setup, include=FALSE}
@@ -69,7 +69,7 @@ clinicaltrials_count(query = c("rcv_s=01/01/2019", "rcv_e=12/31/2019"))
 
 ## Trials Registered in the Past 10 years
 
-```{r}
+```{r over time}
 #### code adapted from Billy Caughey tutorial 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
 
 ##### Initial Values #####
@@ -114,5 +114,5 @@ with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Interv
 
 
 
-Please contact Alexandra Bannach-Brown <mailto:alexandra_bannachbrown@bond.edu.au> if you have any questions. 
+Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions. 
 

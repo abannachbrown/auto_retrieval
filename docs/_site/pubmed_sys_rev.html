@@ -7,11 +7,12 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="Alexandra Bannach-Brown on behalf of the EQUATOR Network" />
 
-<meta name="date" content="2019-05-28" />
+<meta name="date" content="2019-08-23" />
 
 <title>Identifying Systematic Reviews from PubMed</title>
 
@@ -247,18 +248,6 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -296,7 +285,7 @@ $(document).ready(function () {
   <a href="pubmed_sys_rev.html">Systematic Reviews</a>
 </li>
 <li>
-  <a href="PROSPERO.html">SR Protocols</a>
+  <a href="PROSPERO.html">Systematic Review Protocols</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -315,14 +304,14 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Identifying Systematic Reviews from PubMed</h1>
 <h4 class="author">Alexandra Bannach-Brown on behalf of the EQUATOR Network</h4>
-<h4 class="date">28 May 2019</h4>
+<h4 class="date">23 Aug 2019</h4>
 
 </div>
 
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This is document which shows the summary information from PubMed <a href="https://www.ncbi.nlm.nih.gov/pubmed" class="uri">https://www.ncbi.nlm.nih.gov/pubmed</a> about systematic reviews. This document is built for the EQUATOR Network.</p>
+<p>This is document which shows the summary information from <a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank" PubMed</a> about the number of systematic reviews indexed.</p>
 </div>
 <div id="systematic-reviews-of-human-studies" class="section level1">
 <h1>Systematic Reviews of Human Studies</h1>
@@ -331,7 +320,7 @@ $(document).ready(function () {
 sys_rev_human_query &lt;- &quot;(systematic review[PTYP] AND human[MESH])&quot;
 sys_rev_human_search &lt;- entrez_search(db = &quot;pubmed&quot;, sys_rev_human_query, use_history = TRUE )
 sys_rev_human_search$count</code></pre>
-<pre><code>## [1] 106799</code></pre>
+<pre><code>## [1] 109544</code></pre>
 <p>We can visualise the number of systematic reviews published in the past 10 years.</p>
 <pre class="r"><code>sys_rev_year &lt;- function(year, term){
   query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
@@ -351,7 +340,7 @@ plot(year, papers, type=&#39;b&#39;, main=&quot;Increase in Human Systematic Rev
 
 sys_rev_animal_search &lt;- entrez_search(db = &quot;pubmed&quot;, alt_animal_query, use_history = TRUE )
 sys_rev_animal_search$count</code></pre>
-<pre><code>## [1] 757</code></pre>
+<pre><code>## [1] 771</code></pre>
 <p>We can visualise the number of animal systematic reviews published in the past 10 years.</p>
 <pre class="r"><code>sys_rev_year &lt;- function(year, term){
   query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
@@ -363,10 +352,10 @@ papers_animal &lt;- sapply(year, sys_rev_year, term=&quot;(systematic review[PTY
 ## produce the plots
 plot(year, papers_animal, type=&#39;b&#39;, main=&quot;Increase in Animal Systematic Reviews - Count per year 2008:2018&quot;)</code></pre>
 <p><img src="pubmed_sys_rev_files/figure-html/sys%20rev%20animal%20graph-1.png" width="672" /></p>
-<p>Please contact Alexandra Bannach-Brown <a href="mailto:alexandra_bannachbrown@bond.edu.au">mailto:alexandra_bannachbrown@bond.edu.au</a> if you have any questions.</p>
+<p>Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions.</p>
 </div>
 
-<p>Copyright &copy; 2019 EQUATOR Network - CC-BY-4.0.</p>
+<p>Copyright &copy; 2019 EQUATOR Network </p>
 
 
 
@@ -384,6 +373,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
