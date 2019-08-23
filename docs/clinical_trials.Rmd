@@ -1,7 +1,7 @@
 ---
 title: "Summary from ClinicalTrials.gov"
 author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
-date: 2019-05-23
+date: 2019-08-23
 output: html_document
 ---
 
@@ -70,18 +70,11 @@ clinicaltrials_count(query = c("rcv_s=01/01/2019", "rcv_e=12/31/2019"))
 ## Trials Registered in the Past 10 years
 
 ```{r}
-#### code taken from Billy Caughey tutorial ##
-#### 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
+#### code adapted from Billy Caughey tutorial 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
 
 ##### Initial Values #####
 startYear <- 2009
 endYear <- 2019
-
-##### Trials over time #####
-##### Initial Values #####
-startYear <- 2009
-endYear <- 2019
-
 ##### Trials over time #####
 months <- 1:12
 years <- startYear:endYear
@@ -90,7 +83,6 @@ totalTrials <- NULL
 startDate <- NULL
 
 for(j in 1:length(years)){
-  
   for(i in 1:length(months)){
     
     x <- clinicaltrials_count(query = c("type=Intr", 
@@ -100,13 +92,10 @@ for(j in 1:length(years)){
     numOfTrials <- c(numOfTrials,x)
     totalTrials <- c(totalTrials,sum(numOfTrials))
     startDate <- c(startDate,paste(months[i],"/01/",years[j],sep=""))
-    
-    
   }
   
 }
 
-##### Make a dataset #####
 
 ## Put fields together
 ctOverTime <- data.frame(startDate,numOfTrials)
@@ -117,13 +106,9 @@ charLength <- nchar(ctOverTime$startDate) == 9
 # cbind(ctOverTime$startDate,nchar(ctOverTime$startDate),charLength)
 ctOverTime$startDate <- ifelse(charLength == TRUE,paste("0",ctOverTime$startDate,sep=""),
                                ctOverTime$startDate)
-## Save dataset
-# save(ctOverTime, file = "Trials Over Time.Rdata")
-
 #### plot
 ctOverTime$startDate <- as.Date(ctOverTime$startDate,"%m/%d/%Y")
-with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials 2009-2019",
-                      xlab = "Time",ylab="Trials"))
+with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials 2009-2019", xlab = "Time",ylab="Trials"))
 
 ```
 

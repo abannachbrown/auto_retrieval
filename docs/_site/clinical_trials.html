@@ -7,6 +7,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="Alexandra Bannach-Brown on behalf of the EQUATOR Network" />
@@ -247,18 +248,6 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
@@ -324,35 +313,93 @@ $(document).ready(function () {
 <h2>Introduction</h2>
 <p>This is document which shows the summary information from ClinicalTrials.gov <a href="http://clinicaltrials.gov" class="uri">http://clinicaltrials.gov</a>. This document is built for the EQUATOR Network.</p>
 </div>
-<div id="number-of-trials" class="section level2">
-<h2>Number of Trials</h2>
+<div id="total-number-of-trials" class="section level2">
+<h2>Total Number of Trials</h2>
 <p>The number of records in clinicaltrials.gov is:</p>
 <pre class="r"><code>clinicaltrials_count(query = &quot;ALL&quot;)</code></pre>
-<pre><code>## [1] 308830</code></pre>
+<pre><code>## [1] 314509</code></pre>
 </div>
-<div id="actively-recruiting-trials" class="section level2">
-<h2>Actively Recruiting Trials</h2>
+<div id="total-number-of-actively-recruiting-trials" class="section level2">
+<h2>Total Number of Actively Recruiting Trials</h2>
 <p>The number of trials that are currently recruiting is:</p>
 <pre class="r"><code>clinicaltrials_count(query = c(&quot;recr=Recruiting&quot;, &quot;ALL&quot;))</code></pre>
-<pre><code>## [1] 50915</code></pre>
+<pre><code>## [1] 51436</code></pre>
 </div>
-<div id="completed-trials" class="section level2">
-<h2>Completed Trials</h2>
+<div id="total-number-of-completed-trials" class="section level2">
+<h2>Total Number of Completed Trials</h2>
 <p>The number of trials that are marked as completed:</p>
 <pre class="r"><code>clinicaltrials_count(query = c(&quot;recr=Completed&quot;, &quot;ALL&quot;))</code></pre>
-<pre><code>## [1] 164808</code></pre>
+<pre><code>## [1] 168406</code></pre>
 </div>
 <div id="new-trials-in-2018" class="section level2">
 <h2>New Trials in 2018</h2>
 <p>The number of new trials posted in 2018 is:</p>
 <pre class="r"><code>clinicaltrials_count(query = c(&quot;rcv_s=01/01/2018&quot;, &quot;rcv_e=12/31/2018&quot;))</code></pre>
-<pre><code>## [1] 30984</code></pre>
+<pre><code>## [1] 30982</code></pre>
 </div>
 <div id="new-trials-in-2019" class="section level2">
 <h2>New Trials in 2019</h2>
 <p>The number of new trials posted in 2019 is:</p>
 <pre class="r"><code>clinicaltrials_count(query = c(&quot;rcv_s=01/01/2019&quot;, &quot;rcv_e=12/31/2019&quot;))</code></pre>
-<pre><code>## [1] 15470</code></pre>
+<pre><code>## [1] 21156</code></pre>
+</div>
+<div id="trials-registered-in-the-past-10-years" class="section level2">
+<h2>Trials Registered in the Past 10 years</h2>
+<pre class="r"><code>#### code taken from Billy Caughey tutorial ##
+#### 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
+
+##### Initial Values #####
+startYear &lt;- 2009
+endYear &lt;- 2019
+
+##### Trials over time #####
+##### Initial Values #####
+startYear &lt;- 2009
+endYear &lt;- 2019
+
+##### Trials over time #####
+months &lt;- 1:12
+years &lt;- startYear:endYear
+numOfTrials &lt;- NULL
+totalTrials &lt;- NULL
+startDate &lt;- NULL
+
+for(j in 1:length(years)){
+  
+  for(i in 1:length(months)){
+    
+    x &lt;- clinicaltrials_count(query = c(&quot;type=Intr&quot;, 
+                                        #&quot;term=workplace+program OR workplace+wellness OR workplace+health+program&quot;, 
+                                        paste(&quot;rcv_e=&quot;,months[i],&quot;/01/&quot;,years[j],sep=&quot;&quot;)))
+    
+    numOfTrials &lt;- c(numOfTrials,x)
+    totalTrials &lt;- c(totalTrials,sum(numOfTrials))
+    startDate &lt;- c(startDate,paste(months[i],&quot;/01/&quot;,years[j],sep=&quot;&quot;))
+    
+    
+  }
+  
+}
+
+##### Make a dataset #####
+
+## Put fields together
+ctOverTime &lt;- data.frame(startDate,numOfTrials)
+
+## Convert start date to a date field
+ctOverTime$startDate &lt;- as.character(ctOverTime$startDate)
+charLength &lt;- nchar(ctOverTime$startDate) == 9
+# cbind(ctOverTime$startDate,nchar(ctOverTime$startDate),charLength)
+ctOverTime$startDate &lt;- ifelse(charLength == TRUE,paste(&quot;0&quot;,ctOverTime$startDate,sep=&quot;&quot;),
+                               ctOverTime$startDate)
+## Save dataset
+# save(ctOverTime, file = &quot;Trials Over Time.Rdata&quot;)
+
+#### plot
+ctOverTime$startDate &lt;- as.Date(ctOverTime$startDate,&quot;%m/%d/%Y&quot;)
+with(ctOverTime, plot(numOfTrials ~ startDate, type = &quot;l&quot;,main=&quot;Number of Intervention Trials 2009-2019&quot;,
+                      xlab = &quot;Time&quot;,ylab=&quot;Trials&quot;))</code></pre>
+<p><img src="clinical_trials_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 <p>Please contact Alexandra Bannach-Brown <a href="mailto:alexandra_bannachbrown@bond.edu.au">mailto:alexandra_bannachbrown@bond.edu.au</a> if you have any questions.</p>
 </div>
 
@@ -374,6 +421,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
