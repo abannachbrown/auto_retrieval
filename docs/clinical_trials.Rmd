@@ -28,7 +28,7 @@ chooseCRANmirror(graphics=FALSE, ind=1)
 
 
 
-## Number of Trials
+## Total Number of Trials
 
 The number of records in clinicaltrials.gov is: 
 
@@ -37,7 +37,7 @@ clinicaltrials_count(query = "ALL")
 ```
 
 
-## Actively Recruiting Trials
+## Total Number of Actively Recruiting Trials
 
 The number of trials that are currently recruiting is: 
 ```{r active trials}
@@ -45,7 +45,7 @@ clinicaltrials_count(query = c("recr=Recruiting", "ALL"))
 ```
 
 
-## Completed Trials
+## Total Number of Completed Trials
 
 The number of trials that are marked as completed:
 ```{r completed trials}
@@ -78,6 +78,11 @@ startYear <- 2009
 endYear <- 2019
 
 ##### Trials over time #####
+##### Initial Values #####
+startYear <- 2009
+endYear <- 2019
+
+##### Trials over time #####
 months <- 1:12
 years <- startYear:endYear
 numOfTrials <- NULL
@@ -85,18 +90,20 @@ totalTrials <- NULL
 startDate <- NULL
 
 for(j in 1:length(years)){
-
-    for(i in 1:length(months)){
+  
+  for(i in 1:length(months)){
     
-        x <- clinicaltrials_count(query = c(paste("rcv_e=", months[i], "/01/", years[j], sep="")))
-        
-        numOfTrials <- c(numOfTrials,x)
-        totalTrials <- c(totalTrials,sum(numOfTrials))
-        startDate <- c(startDate,paste(months[i], "01/", years[j],sep=""))
-        
-        
-    }
-
+    x <- clinicaltrials_count(query = c("type=Intr", 
+                                        #"term=workplace+program OR workplace+wellness OR workplace+health+program", 
+                                        paste("rcv_e=",months[i],"/01/",years[j],sep="")))
+    
+    numOfTrials <- c(numOfTrials,x)
+    totalTrials <- c(totalTrials,sum(numOfTrials))
+    startDate <- c(startDate,paste(months[i],"/01/",years[j],sep=""))
+    
+    
+  }
+  
 }
 
 ##### Make a dataset #####
@@ -110,14 +117,12 @@ charLength <- nchar(ctOverTime$startDate) == 9
 # cbind(ctOverTime$startDate,nchar(ctOverTime$startDate),charLength)
 ctOverTime$startDate <- ifelse(charLength == TRUE,paste("0",ctOverTime$startDate,sep=""),
                                ctOverTime$startDate)
-
 ## Save dataset
 # save(ctOverTime, file = "Trials Over Time.Rdata")
 
-
 #### plot
 ctOverTime$startDate <- as.Date(ctOverTime$startDate,"%m/%d/%Y")
-with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Trials Registered Over Time",
+with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials 2009-2019",
                       xlab = "Time",ylab="Trials"))
 
 ```
