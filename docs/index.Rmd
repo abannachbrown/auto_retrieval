@@ -6,4 +6,4 @@ This website provides up-to-date summaries of different publication types and su
 
 Dates on each page refer to the date the search was run. 
 
-Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions. 
+Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank"> Alexandra Bannach-Brown</a> if you have any questions. 

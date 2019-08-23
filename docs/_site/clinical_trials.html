@@ -311,7 +311,7 @@ $(document).ready(function () {
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This is document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank" ClinicalTrials.gov </a>.</p>
+<p>This is document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank"> ClinicalTrials.gov </a>.</p>
 </div>
 <div id="total-number-of-trials" class="section level2">
 <h2>Total Number of Trials</h2>
@@ -345,7 +345,7 @@ $(document).ready(function () {
 </div>
 <div id="trials-registered-in-the-past-10-years" class="section level2">
 <h2>Trials Registered in the Past 10 years</h2>
-<p>Graph showing the increase in clinical intervention trials published in the last</p>
+<p>Graph showing the increase in clinical intervention trials published in the last 10 years:</p>
 <pre class="r"><code>#### code adapted from Billy Caughey tutorial 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
 
 ##### Initial Values #####
@@ -386,7 +386,7 @@ ctOverTime$startDate &lt;- ifelse(charLength == TRUE,paste(&quot;0&quot;,ctOverT
 ctOverTime$startDate &lt;- as.Date(ctOverTime$startDate,&quot;%m/%d/%Y&quot;)
 with(ctOverTime, plot(numOfTrials ~ startDate, type = &quot;l&quot;,main=&quot;Number of Intervention Trials 2009-2019&quot;, xlab = &quot;Time&quot;,ylab=&quot;Trials&quot;))</code></pre>
 <p><img src="clinical_trials_files/figure-html/over%20time-1.png" width="672" /></p>
-<p>Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions.</p>
+<p>Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank"> Alexandra Bannach-Brown</a> if you have any questions.</p>
 </div>
 
 <p>Copyright &copy; 2019 EQUATOR Network </p>

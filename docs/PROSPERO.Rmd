@@ -22,7 +22,7 @@ Data from PROSPERO is kindly provided by Ruth Walker at PROSPERO.
 ```{r}
 # load csv files
 prospero_all <- read.csv("~/Documents/auto_retrieval/prospero_numbers_all.csv", sep = ",", header=TRUE)
-plot(prospero_all$Year, prospero_all$Number_regos, type='b', main = "All systematic review registrations on PROSPERO")
+plot(prospero_all$Year, prospero_all$Number_regos, type='b', main = "All systematic review registrations on PROSPERO", xlab = "Year", ylab="Registrations")
 ```
 
 
@@ -31,7 +31,7 @@ plot(prospero_all$Year, prospero_all$Number_regos, type='b', main = "All systema
 # load csv
 prospero_clinical <- read.csv("~/Documents/auto_retrieval/prospero_numbers_clinical.csv", sep = ",", header = TRUE)
 # plot
-plot(prospero_clinical$Year, prospero_clinical$Number_regos, type='b', main = "Clinical & General Systematic Review Registrations on PROSPERO")
+plot(prospero_clinical$Year, prospero_clinical$Number_regos, type='b', main = "Clinical & General Systematic Review Registrations on PROSPERO", xlab = "Year", ylab="Registrations")
 ```
 ## Animal Systematic Review Registrations
 
@@ -39,7 +39,7 @@ plot(prospero_clinical$Year, prospero_clinical$Number_regos, type='b', main = "C
 # load csv
 prospero_animal <- read.csv("~/Documents/auto_retrieval/prospero_numbers_animal.csv", sep = ",", header = TRUE)
 # plot
-plot(prospero_animal$Year, prospero_animal$Number_regos, type='b', main = "Animal Systematic Review Registrations on PROSPERO")
+plot(prospero_animal$Year, prospero_animal$Number_regos, type='b', main = "Animal Systematic Review Registrations on PROSPERO", xlab = "Year", ylab="Registrations")
 ```
 
 ## Cochrane Systematic Review Registrations
@@ -48,9 +48,9 @@ plot(prospero_animal$Year, prospero_animal$Number_regos, type='b', main = "Anima
 # load csv
 prospero_cochrane <- read.csv("~/Documents/auto_retrieval/prospero_numbers_cochrane.csv", sep = ",", header = TRUE)
 # plot
-plot(prospero_cochrane$Year, prospero_cochrane$Number_regos, type='b', main = "Cochrane Systematic Review Registrations on PROSPERO")
+plot(prospero_cochrane$Year, prospero_cochrane$Number_regos, type='b', main = "Cochrane Systematic Review Registrations on PROSPERO", xlab = "Year", ylab="Registrations")
 ```
 
 
 
-Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions. 
+Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank"> Alexandra Bannach-Brown</a> if you have any questions. 

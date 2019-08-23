@@ -7,7 +7,7 @@ output: html_document
 
 ## Introduction
 
-This is document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank" ClinicalTrials.gov </a>. 
+This is document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank"> ClinicalTrials.gov </a>. 
 
 
 
@@ -32,7 +32,6 @@ chooseCRANmirror(graphics=FALSE, ind=1)
 ## Total Number of Trials
 
 The number of records in clinicaltrials.gov is: 
-
 ```{r all trials}
 clinicaltrials_count(query = "ALL")
 ```
@@ -69,7 +68,7 @@ clinicaltrials_count(query = c("rcv_s=01/01/2019", "rcv_e=12/31/2019"))
 
 
 ## Trials Registered in the Past 10 years
-Graph showing the increase in clinical intervention trials published in the last
+Graph showing the increase in clinical intervention trials published in the last 10 years:
 ```{r over time}
 #### code adapted from Billy Caughey tutorial 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
 
@@ -115,5 +114,5 @@ with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Interv
 
 
 
-Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank" Alexandra Bannach-Brown</a> if you have any questions. 
+Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank"> Alexandra Bannach-Brown</a> if you have any questions. 
 
