@@ -88,14 +88,11 @@ for(j in 1:length(years)){
     x <- clinicaltrials_count(query = c("type=Intr", 
                                         #"term=workplace+program OR workplace+wellness OR workplace+health+program", 
                                         paste("rcv_e=",months[i],"/01/",years[j],sep="")))
-    
     numOfTrials <- c(numOfTrials,x)
     totalTrials <- c(totalTrials,sum(numOfTrials))
     startDate <- c(startDate,paste(months[i],"/01/",years[j],sep=""))
   }
-  
 }
-
 
 ## Put fields together
 ctOverTime <- data.frame(startDate,numOfTrials)
@@ -108,7 +105,7 @@ ctOverTime$startDate <- ifelse(charLength == TRUE,paste("0",ctOverTime$startDate
                                ctOverTime$startDate)
 #### plot
 ctOverTime$startDate <- as.Date(ctOverTime$startDate,"%m/%d/%Y")
-with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials 2009-2019", xlab = "Time",ylab="Trials"))
+with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials Registered 2009-2019", ylim = c(0,250000), xlab = "Time",ylab="Trials"))
 
 ```
 

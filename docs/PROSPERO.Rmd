@@ -33,8 +33,9 @@ prospero_clinical <- read.csv("~/Documents/auto_retrieval/prospero_numbers_clini
 # plot
 plot(prospero_clinical$Year, prospero_clinical$Number_regos, type='b', main = "Clinical & General Systematic Review Registrations on PROSPERO", xlab = "Year", ylab="Registrations")
 ```
-## Animal Systematic Review Registrations
 
+
+## Animal Systematic Review Registrations
 ```{r}
 # load csv
 prospero_animal <- read.csv("~/Documents/auto_retrieval/prospero_numbers_animal.csv", sep = ",", header = TRUE)
@@ -42,8 +43,8 @@ prospero_animal <- read.csv("~/Documents/auto_retrieval/prospero_numbers_animal.
 plot(prospero_animal$Year, prospero_animal$Number_regos, type='b', main = "Animal Systematic Review Registrations on PROSPERO", xlab = "Year", ylab="Registrations")
 ```
 
-## Cochrane Systematic Review Registrations
 
+## Cochrane Systematic Review Registrations
 ```{r}
 # load csv
 prospero_cochrane <- read.csv("~/Documents/auto_retrieval/prospero_numbers_cochrane.csv", sep = ",", header = TRUE)
