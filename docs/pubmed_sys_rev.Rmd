@@ -2,7 +2,9 @@
 title: "Identifying Systematic Reviews from PubMed"
 author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: html_document
+output: 
+  html_document:
+    code_folding: hide
 ---
 
 ## Introduction
@@ -41,10 +43,23 @@ sys_rev_year <- function(year, term){
 year <- 2008:2018
 papers <- sapply(year, sys_rev_year, term="(systematic review[PTYP] AND human[MESH])", USE.NAMES = FALSE)
 ## produce the plots
-plot(year, papers, type='b', main="Increase in Human Systematic Reviews - Count per year 2008:2018", 
-      ylim =  c(0,17000),
-      xlab = "Year",
-      ylab="Articles")
+# plot(year, papers, type='b', main="Increase in Human Systematic Reviews - Count per year 2008:2018", 
+#       ylim =  c(0,17000),
+#       xlab = "Year",
+#       ylab="Articles")
+
+plot_ly( x=~year) %>%
+  add_trace(
+        type = 'scatter', y=~papers, 
+        name = "Number of Systematic Reviews Published", mode = 'lines+markers',
+        line = list(color = 'rgb(171,39,79)', width = 2)
+          ) %>%
+  layout(
+    title =  "Increase in Human Systematic Reviews - Count per year 2008:2018",
+    xaxis = list(title ="Year"),
+    yaxis = list(title ="Articles", rangemode = "tozero")
+  )
+
 ```
 
 
@@ -67,10 +82,22 @@ sys_rev_year <- function(year, term){
 year <- 2008:2018
 papers_animal <- sapply(year, sys_rev_year, term="(systematic review[PTYP] AND animal[MESH] NOT human[MESH])", USE.NAMES = FALSE)
 ## produce the plots
-plot(year, papers_animal, type='b', main="Increase in Animal Systematic Reviews - Count per year 2008:2018", 
-     ylim =  c(0,150),
-     xlab = "Year",
-     ylab="Articles")
+# plot(year, papers_animal, type='b', main="Increase in Animal Systematic Reviews - Count per year 2008:2018", 
+#      ylim =  c(0,150),
+#      xlab = "Year",
+#      ylab="Articles")
+
+plot_ly( x=~year) %>%
+  add_trace(
+        type = 'scatter', y=~papers_animal, 
+        name = "Number of Systematic Reviews Published", mode = 'lines+markers',
+        line = list(color = 'rgb(124,185,232)', width = 2)
+          ) %>%
+  layout(
+    title =  "Increase in Animal Systematic Reviews - Count per year 2008:2018",
+    xaxis = list(title ="Year"),
+    yaxis = list(title ="Articles", rangemode = "tozero")
+  )
 ```
 
 

@@ -4,7 +4,7 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "ClinicalTrials.gov"
+    - text: "Clinical Trials"
       href: clinical_trials.html
     - text: "Systematic Reviews"
       href: pubmed_sys_rev.html
@@ -14,8 +14,8 @@ navbar:
       href: about.html
 output:
   html_document:
-    theme: cosmo
-    highlight: textmate
+    theme: paper
+    highlight: pygments
     include:
       after_body: footer.html
-    css: styles.css
+    css: style.css

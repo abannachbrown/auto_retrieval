@@ -1,8 +1,10 @@
 ---
-title: "PROSPERO"
+title: "Identifying Systematic Review Protocols Registered on PROSPERO"
 author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
 date: "23 August, 2019"
-output: html_document
+output: 
+  html_document:
+    code_folding: hide
 ---
 
 ## Introduction
@@ -11,6 +13,10 @@ This is a document which shows the summary information from <a href="https://www
 
 ```{r setup, include=FALSE}
 ## install and load libraries
+# install.packages("plotly")
+library(plotly)
+library(tidyverse)
+
 # set up
 knitr::opts_chunk$set(echo = TRUE)
 chooseCRANmirror(graphics=FALSE, ind=1)
@@ -22,7 +28,20 @@ Data from PROSPERO is kindly provided by Ruth Walker at PROSPERO.
 ```{r}
 # load csv files
 prospero_all <- read.csv("~/Documents/auto_retrieval/prospero_numbers_all.csv", sep = ",", header=TRUE)
-plot(prospero_all$Year, prospero_all$Number_regos, type='b', main = "All systematic review registrations on PROSPERO", xlab = "Year", ylab="Registrations")
+
+# plot
+plot_ly(data = prospero_all, x=~Year) %>%
+  add_trace(
+        type = 'scatter', y=~Number_regos, 
+        name = "Number of Registrations", mode = 'lines+markers',
+        line = list(color = 'rgb(205, 12, 24)', width = 2)
+        ) %>%
+  layout(
+    title =  "All systematic review registrations on PROSPERO",
+    xaxis = list(title ="Year"),
+    yaxis = list(title ="Registrations")
+    )
+
 ```
 
 
@@ -31,25 +50,57 @@ plot(prospero_all$Year, prospero_all$Number_regos, type='b', main = "All systema
 # load csv
 prospero_clinical <- read.csv("~/Documents/auto_retrieval/prospero_numbers_clinical.csv", sep = ",", header = TRUE)
 # plot
-plot(prospero_clinical$Year, prospero_clinical$Number_regos, type='b', main = "Clinical & General Systematic Review Registrations on PROSPERO", xlab = "Year", ylab="Registrations")
+plot_ly(data = prospero_clinical, x=~Year) %>%
+  add_trace(
+        type = 'scatter', y=~Number_regos, 
+        name = "Number of Registrations", mode = 'lines+markers',
+        line = list(color = 'rgb(22, 96, 167)', width = 2)
+        ) %>%
+  layout(
+    title =  "Clinical & General Systematic Review Registrations on PROSPERO",
+    xaxis = list(title ="Year"),
+    yaxis = list(title ="Registrations")
+    )
 ```
 
 
-## Animal Systematic Review Registrations
+# Animal Systematic Review Registrations
 ```{r}
 # load csv
 prospero_animal <- read.csv("~/Documents/auto_retrieval/prospero_numbers_animal.csv", sep = ",", header = TRUE)
 # plot
-plot(prospero_animal$Year, prospero_animal$Number_regos, type='b', main = "Animal Systematic Review Registrations on PROSPERO", xlab = "Year", ylab="Registrations")
+plot_ly(data = prospero_animal, x=~Year) %>%
+  add_trace(
+        type = 'scatter', y=~Number_regos, 
+        name = "Number of Registrations", mode = 'lines+markers',
+        line = list(color = 'rgb(2, 2, 2)', width = 2)
+        ) %>%
+  layout(
+    title =  "Animal Systematic Review Registrations on PROSPERO",
+    xaxis = list(title ="Year"),
+    yaxis = list(title ="Registrations")
+    )
+
+
 ```
 
 
-## Cochrane Systematic Review Registrations
+# Cochrane Systematic Review Registrations
 ```{r}
 # load csv
 prospero_cochrane <- read.csv("~/Documents/auto_retrieval/prospero_numbers_cochrane.csv", sep = ",", header = TRUE)
 # plot
-plot(prospero_cochrane$Year, prospero_cochrane$Number_regos, type='b', main = "Cochrane Systematic Review Registrations on PROSPERO", xlab = "Year", ylab="Registrations")
+plot_ly(data = prospero_cochrane, x=~Year) %>%
+  add_trace(
+        type = 'scatter', y=~Number_regos, 
+        name = "Number of Registrations", mode = 'lines+markers',
+        line = list(color = 'rgb(147, 43, 140)', width = 2)
+          ) %>%
+  layout(
+    title =  "Cochrane Systematic Review Registrations on PROSPERO",
+    xaxis = list(title ="Year"),
+    yaxis = list(title ="Registrations")
+  )
 ```
 
 

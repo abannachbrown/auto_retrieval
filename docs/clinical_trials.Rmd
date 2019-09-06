@@ -1,8 +1,10 @@
 ---
-title: "Summary from ClinicalTrials.gov"
+title: "Identifying Trials Registerd on ClinicalTrials.gov"
 author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-output: html_document
+output: 
+  html_document:
+    code_folding: hide
 ---
 
 ## Introduction
@@ -105,7 +107,25 @@ ctOverTime$startDate <- ifelse(charLength == TRUE,paste("0",ctOverTime$startDate
                                ctOverTime$startDate)
 #### plot
 ctOverTime$startDate <- as.Date(ctOverTime$startDate,"%m/%d/%Y")
-with(ctOverTime, plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials Registered 2009-2019", ylim = c(0,250000), xlab = "Time",ylab="Trials"))
+with(ctOverTime, 
+     
+ plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials Registered 2009-2019", ylim = c(0,250000), xlab = "Time",ylab="Trials")
+)
+     
+     plot_ly( x=~startDate) %>%
+  add_trace(
+        type = 'scatter', y=~numOfTrials, 
+        name = "Number of Intervention Trials Registered 2009-2019", mode = 'lines+markers',
+        line = list(color = 'rgb(79,78,84)', width = 2)
+          ) %>%
+  layout(
+    title =  "Number of Intervention Trials Registered 2009-2019",
+    xaxis = list(title ="Year"),
+    yaxis = list(title ="Articles", rangemode = "tozero")
+  )
+     
+     
+     )
 
 ```
 

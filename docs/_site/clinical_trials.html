@@ -13,34 +13,92 @@
 <meta name="author" content="Alexandra Bannach-Brown on behalf of the EQUATOR Network" />
 
 
-<title>Summary from ClinicalTrials.gov</title>
+<title>Identifying Trials Registerd on ClinicalTrials.gov</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -70,7 +128,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="style.css" type="text/css" />
 
 
 
@@ -106,33 +164,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 64px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .dropdown-submenu {
   position: relative;
@@ -248,6 +306,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -278,7 +339,7 @@ $(document).ready(function () {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="clinical_trials.html">ClinicalTrials.gov</a>
+  <a href="clinical_trials.html">Clinical Trials</a>
 </li>
 <li>
   <a href="pubmed_sys_rev.html">Systematic Reviews</a>
@@ -299,9 +360,17 @@ $(document).ready(function () {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">Summary from ClinicalTrials.gov</h1>
+
+<h1 class="title toc-ignore">Identifying Trials Registerd on ClinicalTrials.gov</h1>
 <h4 class="author">Alexandra Bannach-Brown on behalf of the EQUATOR Network</h4>
 <h4 class="date">06 September, 2019</h4>
 
@@ -315,72 +384,72 @@ $(document).ready(function () {
 <div id="total-number-of-trials" class="section level2">
 <h2>Total Number of Trials</h2>
 <p>The number of records in clinicaltrials.gov is:</p>
-<pre class="r"><code>clinicaltrials_count(query = &quot;ALL&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="st">&quot;ALL&quot;</span>)</code></pre></div>
 <pre><code>## [1] 315441</code></pre>
 </div>
 <div id="total-number-of-actively-recruiting-trials" class="section level2">
 <h2>Total Number of Actively Recruiting Trials</h2>
 <p>The number of trials that are currently recruiting is:</p>
-<pre class="r"><code>clinicaltrials_count(query = c(&quot;recr=Recruiting&quot;, &quot;ALL&quot;))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;recr=Recruiting&quot;</span>, <span class="st">&quot;ALL&quot;</span>))</code></pre></div>
 <pre><code>## [1] 51223</code></pre>
 </div>
 <div id="total-number-of-completed-trials" class="section level2">
 <h2>Total Number of Completed Trials</h2>
 <p>The number of trials that are marked as completed:</p>
-<pre class="r"><code>clinicaltrials_count(query = c(&quot;recr=Completed&quot;, &quot;ALL&quot;))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;recr=Completed&quot;</span>, <span class="st">&quot;ALL&quot;</span>))</code></pre></div>
 <pre><code>## [1] 169013</code></pre>
 </div>
 <div id="new-trials-in-2018" class="section level2">
 <h2>New Trials in 2018</h2>
 <p>The number of new trials posted in 2018 is:</p>
-<pre class="r"><code>clinicaltrials_count(query = c(&quot;rcv_s=01/01/2018&quot;, &quot;rcv_e=12/31/2018&quot;))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;rcv_s=01/01/2018&quot;</span>, <span class="st">&quot;rcv_e=12/31/2018&quot;</span>))</code></pre></div>
 <pre><code>## [1] 30981</code></pre>
 </div>
 <div id="new-trials-in-2019" class="section level2">
 <h2>New Trials in 2019</h2>
 <p>The number of new trials posted in 2019 is:</p>
-<pre class="r"><code>clinicaltrials_count(query = c(&quot;rcv_s=01/01/2019&quot;, &quot;rcv_e=12/31/2019&quot;))</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;rcv_s=01/01/2019&quot;</span>, <span class="st">&quot;rcv_e=12/31/2019&quot;</span>))</code></pre></div>
 <pre><code>## [1] 22090</code></pre>
 </div>
 <div id="trials-registered-in-the-past-10-years" class="section level2">
 <h2>Trials Registered in the Past 10 years</h2>
 <p>Graph showing the increase in clinical intervention trials published in the last 10 years:</p>
-<pre class="r"><code>#### code adapted from Billy Caughey tutorial 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">#### code adapted from Billy Caughey tutorial 9th March 2017 https://rpubs.com/wgcaughey1984/257099 ##
 
 ##### Initial Values #####
-startYear &lt;- 2009
-endYear &lt;- 2019
+startYear &lt;-<span class="st"> </span><span class="dv">2009</span>
+endYear &lt;-<span class="st"> </span><span class="dv">2019</span>
 ##### Trials over time #####
-months &lt;- 1:12
-years &lt;- startYear:endYear
-numOfTrials &lt;- NULL
-totalTrials &lt;- NULL
-startDate &lt;- NULL
+months &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">12</span>
+years &lt;-<span class="st"> </span>startYear:endYear
+numOfTrials &lt;-<span class="st"> </span><span class="ot">NULL</span>
+totalTrials &lt;-<span class="st"> </span><span class="ot">NULL</span>
+startDate &lt;-<span class="st"> </span><span class="ot">NULL</span>
 
-for(j in 1:length(years)){
-  for(i in 1:length(months)){
+for(j in <span class="dv">1</span>:<span class="kw">length</span>(years)){
+  for(i in <span class="dv">1</span>:<span class="kw">length</span>(months)){
     
-    x &lt;- clinicaltrials_count(query = c(&quot;type=Intr&quot;, 
-                                        #&quot;term=workplace+program OR workplace+wellness OR workplace+health+program&quot;, 
-                                        paste(&quot;rcv_e=&quot;,months[i],&quot;/01/&quot;,years[j],sep=&quot;&quot;)))
-    numOfTrials &lt;- c(numOfTrials,x)
-    totalTrials &lt;- c(totalTrials,sum(numOfTrials))
-    startDate &lt;- c(startDate,paste(months[i],&quot;/01/&quot;,years[j],sep=&quot;&quot;))
+    x &lt;-<span class="st"> </span><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;type=Intr&quot;</span>, 
+                                        <span class="co">#&quot;term=workplace+program OR workplace+wellness OR workplace+health+program&quot;, </span>
+                                        <span class="kw">paste</span>(<span class="st">&quot;rcv_e=&quot;</span>,months[i],<span class="st">&quot;/01/&quot;</span>,years[j],<span class="dt">sep=</span><span class="st">&quot;&quot;</span>)))
+    numOfTrials &lt;-<span class="st"> </span><span class="kw">c</span>(numOfTrials,x)
+    totalTrials &lt;-<span class="st"> </span><span class="kw">c</span>(totalTrials,<span class="kw">sum</span>(numOfTrials))
+    startDate &lt;-<span class="st"> </span><span class="kw">c</span>(startDate,<span class="kw">paste</span>(months[i],<span class="st">&quot;/01/&quot;</span>,years[j],<span class="dt">sep=</span><span class="st">&quot;&quot;</span>))
   }
 }
 
 ## Put fields together
-ctOverTime &lt;- data.frame(startDate,numOfTrials)
+ctOverTime &lt;-<span class="st"> </span><span class="kw">data.frame</span>(startDate,numOfTrials)
 
 ## Convert start date to a date field
-ctOverTime$startDate &lt;- as.character(ctOverTime$startDate)
-charLength &lt;- nchar(ctOverTime$startDate) == 9
-# cbind(ctOverTime$startDate,nchar(ctOverTime$startDate),charLength)
-ctOverTime$startDate &lt;- ifelse(charLength == TRUE,paste(&quot;0&quot;,ctOverTime$startDate,sep=&quot;&quot;),
+ctOverTime$startDate &lt;-<span class="st"> </span><span class="kw">as.character</span>(ctOverTime$startDate)
+charLength &lt;-<span class="st"> </span><span class="kw">nchar</span>(ctOverTime$startDate) ==<span class="st"> </span><span class="dv">9</span>
+<span class="co"># cbind(ctOverTime$startDate,nchar(ctOverTime$startDate),charLength)</span>
+ctOverTime$startDate &lt;-<span class="st"> </span><span class="kw">ifelse</span>(charLength ==<span class="st"> </span><span class="ot">TRUE</span>,<span class="kw">paste</span>(<span class="st">&quot;0&quot;</span>,ctOverTime$startDate,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>),
                                ctOverTime$startDate)
 #### plot
-ctOverTime$startDate &lt;- as.Date(ctOverTime$startDate,&quot;%m/%d/%Y&quot;)
-with(ctOverTime, plot(numOfTrials ~ startDate, type = &quot;l&quot;,main=&quot;Number of Intervention Trials Registered 2009-2019&quot;, ylim = c(0,250000), xlab = &quot;Time&quot;,ylab=&quot;Trials&quot;))</code></pre>
+ctOverTime$startDate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(ctOverTime$startDate,<span class="st">&quot;%m/%d/%Y&quot;</span>)
+<span class="kw">with</span>(ctOverTime, <span class="kw">plot</span>(numOfTrials ~<span class="st"> </span>startDate, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Number of Intervention Trials Registered 2009-2019&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">250000</span>), <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Trials&quot;</span>))</code></pre></div>
 <p><img src="clinical_trials_files/figure-html/over%20time-1.png" width="672" /></p>
 <p>Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank"> Alexandra Bannach-Brown</a> if you have any questions.</p>
 </div>
@@ -419,6 +488,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

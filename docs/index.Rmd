@@ -1,5 +1,5 @@
 ---
-title: "EQUATOR Network - Summary of Research"
+title: "EQUATOR Network - Summary of Research Articles"
 ---
 
 This website provides up-to-date summaries of different publication types and summary information from a number of different sources on the numbers of publications. This website is built for the EQUATOR Network. 

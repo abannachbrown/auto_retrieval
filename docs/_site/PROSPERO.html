@@ -13,34 +13,99 @@
 <meta name="author" content="Alexandra Bannach-Brown on behalf of the EQUATOR Network" />
 
 
-<title>PROSPERO</title>
+<title>Identifying Systematic Review Protocols Registered on PROSPERO</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+
 
 <style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+.sourceCode .row {
+  width: 100%;
+}
+.sourceCode {
+  overflow-x: auto;
+}
+.code-folding-btn {
+  margin-right: -30px;
+}
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 <style type="text/css">
   pre:not([class]) {
     background-color: white;
   }
 </style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
 
 
 <style type="text/css">
@@ -70,7 +135,7 @@ h6 {
 }
 </style>
 
-<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="style.css" type="text/css" />
 
 
 
@@ -106,33 +171,33 @@ summary {
 <style type="text/css">
 /* padding for bootstrap navbar */
 body {
-  padding-top: 51px;
+  padding-top: 64px;
   padding-bottom: 40px;
 }
 /* offset scroll position for anchor links (for fixed navbar)  */
 .section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
+  padding-top: 69px;
+  margin-top: -69px;
 }
 .dropdown-submenu {
   position: relative;
@@ -248,6 +313,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -278,7 +346,7 @@ $(document).ready(function () {
   <a href="index.html">Home</a>
 </li>
 <li>
-  <a href="clinical_trials.html">ClinicalTrials.gov</a>
+  <a href="clinical_trials.html">Clinical Trials</a>
 </li>
 <li>
   <a href="pubmed_sys_rev.html">Systematic Reviews</a>
@@ -299,9 +367,17 @@ $(document).ready(function () {
 
 <div class="fluid-row" id="header">
 
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">PROSPERO</h1>
+
+<h1 class="title toc-ignore">Identifying Systematic Review Protocols Registered on PROSPERO</h1>
 <h4 class="author">Alexandra Bannach-Brown on behalf of the EQUATOR Network</h4>
 <h4 class="date">23 August, 2019</h4>
 
@@ -315,34 +391,80 @@ $(document).ready(function () {
 <div id="all-data" class="section level2">
 <h2>All Data</h2>
 <p>Data from PROSPERO is kindly provided by Ruth Walker at PROSPERO.</p>
-<pre class="r"><code># load csv files
-prospero_all &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_all.csv&quot;, sep = &quot;,&quot;, header=TRUE)
-plot(prospero_all$Year, prospero_all$Number_regos, type=&#39;b&#39;, main = &quot;All systematic review registrations on PROSPERO&quot;, xlab = &quot;Year&quot;, ylab=&quot;Registrations&quot;)</code></pre>
-<p><img src="PROSPERO_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load csv files</span>
+prospero_all &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/Documents/auto_retrieval/prospero_numbers_all.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>)
+
+<span class="co"># plot</span>
+<span class="kw">plot_ly</span>(<span class="dt">data =</span> prospero_all, <span class="dt">x=</span>~Year) %&gt;%
+<span class="st">  </span><span class="kw">add_trace</span>(
+        <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">y=</span>~Number_regos, 
+        <span class="dt">name =</span> <span class="st">&quot;Number of Registrations&quot;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines+markers&#39;</span>,
+        <span class="dt">line =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&#39;rgb(205, 12, 24)&#39;</span>, <span class="dt">width =</span> <span class="dv">2</span>)
+        ) %&gt;%
+<span class="st">  </span><span class="kw">layout</span>(
+    <span class="dt">title =</span>  <span class="st">&quot;All systematic review registrations on PROSPERO&quot;</span>,
+    <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title =</span><span class="st">&quot;Year&quot;</span>),
+    <span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title =</span><span class="st">&quot;Registrations&quot;</span>)
+    )</code></pre></div>
+<div id="htmlwidget-5688ebf307587b782f53" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5688ebf307587b782f53">{"x":{"visdat":{"d6112a1ae49":["function () ","plotlyVisDat"]},"cur_data":"d6112a1ae49","attrs":{"d6112a1ae49":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","y":{},"name":"Number of Registrations","mode":"lines+markers","line":{"color":"rgb(205, 12, 24)","width":2},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"All systematic review registrations on PROSPERO","xaxis":{"domain":[0,1],"automargin":true,"title":"Year"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Registrations"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[2011,2012,2013,2014,2015,2016,2017,2018,2019],"type":"scatter","y":[284,759,1484,2753,5683,8245,10724,15667,10242],"name":"Number of Registrations","mode":"lines+markers","line":{"color":"rgb(205, 12, 24)","width":2},"marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="clinical-and-general-registrations" class="section level2">
 <h2>Clinical and General Registrations</h2>
-<pre class="r"><code># load csv
-prospero_clinical &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_clinical.csv&quot;, sep = &quot;,&quot;, header = TRUE)
-# plot
-plot(prospero_clinical$Year, prospero_clinical$Number_regos, type=&#39;b&#39;, main = &quot;Clinical &amp; General Systematic Review Registrations on PROSPERO&quot;, xlab = &quot;Year&quot;, ylab=&quot;Registrations&quot;)</code></pre>
-<p><img src="PROSPERO_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load csv</span>
+prospero_clinical &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/Documents/auto_retrieval/prospero_numbers_clinical.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co"># plot</span>
+<span class="kw">plot_ly</span>(<span class="dt">data =</span> prospero_clinical, <span class="dt">x=</span>~Year) %&gt;%
+<span class="st">  </span><span class="kw">add_trace</span>(
+        <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">y=</span>~Number_regos, 
+        <span class="dt">name =</span> <span class="st">&quot;Number of Registrations&quot;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines+markers&#39;</span>,
+        <span class="dt">line =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&#39;rgb(22, 96, 167)&#39;</span>, <span class="dt">width =</span> <span class="dv">2</span>)
+        ) %&gt;%
+<span class="st">  </span><span class="kw">layout</span>(
+    <span class="dt">title =</span>  <span class="st">&quot;Clinical &amp; General Systematic Review Registrations on PROSPERO&quot;</span>,
+    <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title =</span><span class="st">&quot;Year&quot;</span>),
+    <span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title =</span><span class="st">&quot;Registrations&quot;</span>)
+    )</code></pre></div>
+<div id="htmlwidget-0dd88b624b72886aa58f" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0dd88b624b72886aa58f">{"x":{"visdat":{"d615396d143":["function () ","plotlyVisDat"]},"cur_data":"d615396d143","attrs":{"d615396d143":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","y":{},"name":"Number of Registrations","mode":"lines+markers","line":{"color":"rgb(22, 96, 167)","width":2},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Clinical & General Systematic Review Registrations on PROSPERO","xaxis":{"domain":[0,1],"automargin":true,"title":"Year"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Registrations"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[2011,2012,2013,2014,2015,2016,2017,2018,2019],"type":"scatter","y":[284,759,1484,2753,4689,7857,10108,15350,9856],"name":"Number of Registrations","mode":"lines+markers","line":{"color":"rgb(22, 96, 167)","width":2},"marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="animal-systematic-review-registrations" class="section level2">
-<h2>Animal Systematic Review Registrations</h2>
-<pre class="r"><code># load csv
-prospero_animal &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_animal.csv&quot;, sep = &quot;,&quot;, header = TRUE)
-# plot
-plot(prospero_animal$Year, prospero_animal$Number_regos, type=&#39;b&#39;, main = &quot;Animal Systematic Review Registrations on PROSPERO&quot;, xlab = &quot;Year&quot;, ylab=&quot;Registrations&quot;)</code></pre>
-<p><img src="PROSPERO_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div id="animal-systematic-review-registrations" class="section level1">
+<h1>Animal Systematic Review Registrations</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load csv</span>
+prospero_animal &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/Documents/auto_retrieval/prospero_numbers_animal.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co"># plot</span>
+<span class="kw">plot_ly</span>(<span class="dt">data =</span> prospero_animal, <span class="dt">x=</span>~Year) %&gt;%
+<span class="st">  </span><span class="kw">add_trace</span>(
+        <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">y=</span>~Number_regos, 
+        <span class="dt">name =</span> <span class="st">&quot;Number of Registrations&quot;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines+markers&#39;</span>,
+        <span class="dt">line =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&#39;rgb(2, 2, 2)&#39;</span>, <span class="dt">width =</span> <span class="dv">2</span>)
+        ) %&gt;%
+<span class="st">  </span><span class="kw">layout</span>(
+    <span class="dt">title =</span>  <span class="st">&quot;Animal Systematic Review Registrations on PROSPERO&quot;</span>,
+    <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title =</span><span class="st">&quot;Year&quot;</span>),
+    <span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title =</span><span class="st">&quot;Registrations&quot;</span>)
+    )</code></pre></div>
+<div id="htmlwidget-91a30ec8161f9715051b" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-91a30ec8161f9715051b">{"x":{"visdat":{"d614888bfc4":["function () ","plotlyVisDat"]},"cur_data":"d614888bfc4","attrs":{"d614888bfc4":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","y":{},"name":"Number of Registrations","mode":"lines+markers","line":{"color":"rgb(2, 2, 2)","width":2},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Animal Systematic Review Registrations on PROSPERO","xaxis":{"domain":[0,1],"automargin":true,"title":"Year"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Registrations"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[2011,2012,2013,2014,2015,2016,2017,2018,2019],"type":"scatter","y":[0,0,0,0,0,0,2,117,133],"name":"Number of Registrations","mode":"lines+markers","line":{"color":"rgb(2, 2, 2)","width":2},"marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
-<div id="cochrane-systematic-review-registrations" class="section level2">
-<h2>Cochrane Systematic Review Registrations</h2>
-<pre class="r"><code># load csv
-prospero_cochrane &lt;- read.csv(&quot;~/Documents/auto_retrieval/prospero_numbers_cochrane.csv&quot;, sep = &quot;,&quot;, header = TRUE)
-# plot
-plot(prospero_cochrane$Year, prospero_cochrane$Number_regos, type=&#39;b&#39;, main = &quot;Cochrane Systematic Review Registrations on PROSPERO&quot;, xlab = &quot;Year&quot;, ylab=&quot;Registrations&quot;)</code></pre>
-<p><img src="PROSPERO_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div id="cochrane-systematic-review-registrations" class="section level1">
+<h1>Cochrane Systematic Review Registrations</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load csv</span>
+prospero_cochrane &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;~/Documents/auto_retrieval/prospero_numbers_cochrane.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<span class="co"># plot</span>
+<span class="kw">plot_ly</span>(<span class="dt">data =</span> prospero_cochrane, <span class="dt">x=</span>~Year) %&gt;%
+<span class="st">  </span><span class="kw">add_trace</span>(
+        <span class="dt">type =</span> <span class="st">&#39;scatter&#39;</span>, <span class="dt">y=</span>~Number_regos, 
+        <span class="dt">name =</span> <span class="st">&quot;Number of Registrations&quot;</span>, <span class="dt">mode =</span> <span class="st">&#39;lines+markers&#39;</span>,
+        <span class="dt">line =</span> <span class="kw">list</span>(<span class="dt">color =</span> <span class="st">&#39;rgb(147, 43, 140)&#39;</span>, <span class="dt">width =</span> <span class="dv">2</span>)
+          ) %&gt;%
+<span class="st">  </span><span class="kw">layout</span>(
+    <span class="dt">title =</span>  <span class="st">&quot;Cochrane Systematic Review Registrations on PROSPERO&quot;</span>,
+    <span class="dt">xaxis =</span> <span class="kw">list</span>(<span class="dt">title =</span><span class="st">&quot;Year&quot;</span>),
+    <span class="dt">yaxis =</span> <span class="kw">list</span>(<span class="dt">title =</span><span class="st">&quot;Registrations&quot;</span>)
+  )</code></pre></div>
+<div id="htmlwidget-4dcd893c29f83a96ecd2" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4dcd893c29f83a96ecd2">{"x":{"visdat":{"d611af4fbf":["function () ","plotlyVisDat"]},"cur_data":"d611af4fbf","attrs":{"d611af4fbf":{"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","y":{},"name":"Number of Registrations","mode":"lines+markers","line":{"color":"rgb(147, 43, 140)","width":2},"inherit":true}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Cochrane Systematic Review Registrations on PROSPERO","xaxis":{"domain":[0,1],"automargin":true,"title":"Year"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Registrations"},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"x":[2011,2012,2013,2014,2015,2016,2017,2018,2019],"type":"scatter","y":[0,0,0,0,994,388,614,200,253],"name":"Number of Registrations","mode":"lines+markers","line":{"color":"rgb(147, 43, 140)","width":2},"marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 <p>Please contact <a href="mailto:alexandra_bannachbrown@bond.edu.au" target="_blank"> Alexandra Bannach-Brown</a> if you have any questions.</p>
 </div>
 
@@ -380,6 +502,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
