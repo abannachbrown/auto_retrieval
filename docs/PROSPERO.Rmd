@@ -1,13 +1,13 @@
 ---
 title: "PROSPERO"
 author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
-date: "23 Aug 2019"
+date: "23 August, 2019"
 output: html_document
 ---
 
 ## Introduction
 
-This is a document which shows the summary information from [PROSPERO](https://www.crd.york.ac.uk/prospero/) about systematic review registrations. This document is built for the EQUATOR Network. 
+This is a document which shows the summary information from <a href="https://www.crd.york.ac.uk/prospero/" target="_blank"> PROSPERO </a>about systematic review registrations. This document is built for the EQUATOR Network. 
 
 ```{r setup, include=FALSE}
 ## install and load libraries
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE)
 chooseCRANmirror(graphics=FALSE, ind=1)
 ```
 
-## Data 
+## All Data 
 Data from PROSPERO is kindly provided by Ruth Walker at PROSPERO. 
 
 ```{r}
