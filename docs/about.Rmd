@@ -2,10 +2,12 @@
 title: "About This Website"
 ---
 
-EQUATOR - Enhancing the QUAlity and Transparency Of health Research
+EQUATOR - **E**nhancing the **QUA**lity and **T**ransparency **O**f health **R**esearch
 
-This website provides summary information from a number of different sources on the numbers of publications. Numbers of systematic reviews are retrieved automatically from PubMed via their API. The number of clinical trial registrations are automatically retrieved from Clinicaltrials.gov via their API. The numbers of systematic review registrations are retrieved manually from the PROSPERO website. Dates on each 
-This website is built for the <a href="http://www.equator-network.org/" target="_blank"> EQUATOR Network</a>. 
+This website is built for the <a href="http://www.equator-network.org/" target="_blank"> EQUATOR Network</a> and provides summary information from a number of different sources on the numbers of publications. 
+
+Numbers of systematic reviews are retrieved automatically from PubMed via their API, using the R package <a href="https://cran.r-project.org/web/packages/rentrez/index.html" target="_blank">'rentrez' by Winter, Chamberlin & Guangchun 2017</a>. The number of clinical trial registrations are automatically retrieved from Clinicaltrials.gov via their API, using the R package <a href="https://github.com/sachsmc/rclinicaltrials" target="_blank">'rclinicaltrials' by Michael Sachs</a>. The numbers of systematic review registrations are retrieved manually from the PROSPERO website. 
+
 
 This website is hosted by the Institute for Evidence-Based Healthcare at Bond University, for more information please visit our <a href="https://iebh.bond.edu.au/our-research/australasian-equator-centre" target="_blank"> website</a>. 
 

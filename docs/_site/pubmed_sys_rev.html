@@ -12,7 +12,6 @@
 
 <meta name="author" content="Alexandra Bannach-Brown on behalf of the EQUATOR Network" />
 
-<meta name="date" content="2019-08-23" />
 
 <title>Identifying Systematic Reviews from PubMed</title>
 
@@ -304,14 +303,14 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Identifying Systematic Reviews from PubMed</h1>
 <h4 class="author">Alexandra Bannach-Brown on behalf of the EQUATOR Network</h4>
-<h4 class="date">23 Aug 2019</h4>
+<h4 class="date">06 September, 2019</h4>
 
 </div>
 
 
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This is document which shows the summary information from <a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank"> PubMed</a> about the number of systematic reviews indexed.</p>
+<p>This is a document which shows the summary information from <a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank"> PubMed</a> about the number of systematic reviews indexed.</p>
 </div>
 <div id="systematic-reviews-of-human-studies" class="section level2">
 <h2>Systematic Reviews of Human Studies</h2>
@@ -320,7 +319,7 @@ $(document).ready(function () {
 sys_rev_human_query &lt;- &quot;(systematic review[PTYP] AND human[MESH])&quot;
 sys_rev_human_search &lt;- entrez_search(db = &quot;pubmed&quot;, sys_rev_human_query, use_history = TRUE )
 sys_rev_human_search$count</code></pre>
-<pre><code>## [1] 109856</code></pre>
+<pre><code>## [1] 110130</code></pre>
 <p>We can visualise the number of systematic reviews published in the past 10 years.</p>
 <pre class="r"><code>sys_rev_year &lt;- function(year, term){
   query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
@@ -343,7 +342,7 @@ plot(year, papers, type=&#39;b&#39;, main=&quot;Increase in Human Systematic Rev
 
 sys_rev_animal_search &lt;- entrez_search(db = &quot;pubmed&quot;, alt_animal_query, use_history = TRUE )
 sys_rev_animal_search$count</code></pre>
-<pre><code>## [1] 776</code></pre>
+<pre><code>## [1] 778</code></pre>
 <p>We can visualise the number of animal systematic reviews published in the past 10 years.</p>
 <pre class="r"><code>sys_rev_year &lt;- function(year, term){
   query &lt;- paste(term, &quot;AND(&quot;, year, &quot;[PDAT])&quot;)
