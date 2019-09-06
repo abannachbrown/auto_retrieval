@@ -1,13 +1,13 @@
 ---
 title: "Summary from ClinicalTrials.gov"
 author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
-date: "23 Aug 2019"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: html_document
 ---
 
 ## Introduction
 
-This is document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank"> ClinicalTrials.gov </a>. 
+This is a document which shows the summary information about trials registered in <a href="http://clinicaltrials.gov" target="_blank"> ClinicalTrials.gov </a>. 
 
 
 

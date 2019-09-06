@@ -7,7 +7,7 @@ output: html_document
 
 ## Introduction
 
-This is document which shows the summary information from [PROSPERO](https://www.crd.york.ac.uk/prospero/) about systematic review registrations. This document is built for the EQUATOR Network. 
+This is a document which shows the summary information from [PROSPERO](https://www.crd.york.ac.uk/prospero/) about systematic review registrations. This document is built for the EQUATOR Network. 
 
 ```{r setup, include=FALSE}
 ## install and load libraries

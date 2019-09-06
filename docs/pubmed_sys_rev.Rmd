@@ -1,13 +1,13 @@
 ---
 title: "Identifying Systematic Reviews from PubMed"
 author: "Alexandra Bannach-Brown on behalf of the EQUATOR Network"
-date: "23 Aug 2019"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: html_document
 ---
 
 ## Introduction
 
-This is document which shows the summary information from <a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank"> PubMed</a> about the number of systematic reviews indexed. 
+This is a document which shows the summary information from <a href="https://www.ncbi.nlm.nih.gov/pubmed" target="_blank"> PubMed</a> about the number of systematic reviews indexed. 
 
 
 ```{r setup, include=FALSE}
