@@ -16,6 +16,8 @@ This is a document which shows the summary information from <a href="https://www
 ## install and load libraries
 # install.packages("rentrez")
 library(rentrez)
+library(tidyverse)
+library(plotly)
 
 # set up
 knitr::opts_chunk$set(echo = TRUE)

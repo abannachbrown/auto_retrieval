@@ -23,6 +23,7 @@ This is a document which shows the summary information about trials registered i
 
 library(rclinicaltrials)
 library(knitr)
+library(plotly)
 
 # set-up
 knitr::opts_chunk$set(echo = TRUE)
@@ -112,20 +113,19 @@ with(ctOverTime,
  plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials Registered 2009-2019", ylim = c(0,250000), xlab = "Time",ylab="Trials")
 )
      
-     plot_ly( x=~startDate) %>%
-  add_trace(
-        type = 'scatter', y=~numOfTrials, 
-        name = "Number of Intervention Trials Registered 2009-2019", mode = 'lines+markers',
-        line = list(color = 'rgb(79,78,84)', width = 2)
-          ) %>%
-  layout(
-    title =  "Number of Intervention Trials Registered 2009-2019",
-    xaxis = list(title ="Year"),
-    yaxis = list(title ="Articles", rangemode = "tozero")
-  )
+  #    plot_ly( x=~startDate) %>%
+  # add_trace(
+  #       type = 'scatter', y=~numOfTrials, 
+  #       name = "Number of Intervention Trials Registered 2009-2019", mode = 'lines+markers',
+  #       line = list(color = 'rgb(79,78,84)', width = 2)
+  #         ) %>%
+  # layout(
+  #   title =  "Number of Intervention Trials Registered 2009-2019",
+  #   xaxis = list(title ="Year"),
+  #   yaxis = list(title ="Articles", rangemode = "tozero")
+  # )
+  #    
      
-     
-     )
 
 ```
 
