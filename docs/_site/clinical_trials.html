@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
@@ -144,7 +143,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -293,6 +291,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -372,7 +371,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Identifying Trials Registerd on ClinicalTrials.gov</h1>
 <h4 class="author">Alexandra Bannach-Brown on behalf of the EQUATOR Network</h4>
-<h4 class="date">22 January, 2020</h4>
+<h4 class="date">08 April, 2020</h4>
 
 </div>
 
@@ -385,19 +384,19 @@ $(document).ready(function () {
 <h2>Total Number of Trials</h2>
 <p>The number of records in clinicaltrials.gov is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="st">&quot;ALL&quot;</span>)</code></pre></div>
-<pre><code>## [1] 327498</code></pre>
+<pre><code>## [1] 335336</code></pre>
 </div>
 <div id="total-number-of-actively-recruiting-trials" class="section level2">
 <h2>Total Number of Actively Recruiting Trials</h2>
 <p>The number of trials that are currently recruiting is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;recr=Recruiting&quot;</span>, <span class="st">&quot;ALL&quot;</span>))</code></pre></div>
-<pre><code>## [1] 52398</code></pre>
+<pre><code>## [1] 51953</code></pre>
 </div>
 <div id="total-number-of-completed-trials" class="section level2">
 <h2>Total Number of Completed Trials</h2>
 <p>The number of trials that are marked as completed:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;recr=Completed&quot;</span>, <span class="st">&quot;ALL&quot;</span>))</code></pre></div>
-<pre><code>## [1] 175655</code></pre>
+<pre><code>## [1] 180744</code></pre>
 </div>
 <div id="new-trials-in-2018" class="section level2">
 <h2>New Trials in 2018</h2>
@@ -409,7 +408,13 @@ $(document).ready(function () {
 <h2>New Trials in 2019</h2>
 <p>The number of new trials posted in 2019 is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;rcv_s=01/01/2019&quot;</span>, <span class="st">&quot;rcv_e=12/31/2019&quot;</span>))</code></pre></div>
-<pre><code>## [1] 32525</code></pre>
+<pre><code>## [1] 32523</code></pre>
+</div>
+<div id="new-trials-in-2020" class="section level2">
+<h2>New Trials in 2020</h2>
+<p>The number of new trials posted in 2020 is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;rcv_s=01/01/2020&quot;</span>, <span class="st">&quot;rcv_e=12/31/2020&quot;</span>))</code></pre></div>
+<pre><code>## [1] 9490</code></pre>
 </div>
 <div id="trials-registered-in-the-past-10-years" class="section level2">
 <h2>Trials Registered in the Past 10 years</h2>
@@ -418,16 +423,16 @@ $(document).ready(function () {
 
 ##### Initial Values #####
 startYear &lt;-<span class="st"> </span><span class="dv">2009</span>
-endYear &lt;-<span class="st"> </span><span class="dv">2019</span>
+endYear &lt;-<span class="st"> </span><span class="dv">2020</span>
 ##### Trials over time #####
-months &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">12</span>
-years &lt;-<span class="st"> </span>startYear:endYear
+months &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">12</span>
+years &lt;-<span class="st"> </span>startYear<span class="op">:</span>endYear
 numOfTrials &lt;-<span class="st"> </span><span class="ot">NULL</span>
 totalTrials &lt;-<span class="st"> </span><span class="ot">NULL</span>
 startDate &lt;-<span class="st"> </span><span class="ot">NULL</span>
 
-for(j in <span class="dv">1</span>:<span class="kw">length</span>(years)){
-  for(i in <span class="dv">1</span>:<span class="kw">length</span>(months)){
+<span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(years)){
+  <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(months)){
     
     x &lt;-<span class="st"> </span><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;type=Intr&quot;</span>, 
                                         <span class="co">#&quot;term=workplace+program OR workplace+wellness OR workplace+health+program&quot;, </span>
@@ -442,16 +447,16 @@ for(j in <span class="dv">1</span>:<span class="kw">length</span>(years)){
 ctOverTime &lt;-<span class="st"> </span><span class="kw">data.frame</span>(startDate,numOfTrials)
 
 ## Convert start date to a date field
-ctOverTime$startDate &lt;-<span class="st"> </span><span class="kw">as.character</span>(ctOverTime$startDate)
-charLength &lt;-<span class="st"> </span><span class="kw">nchar</span>(ctOverTime$startDate) ==<span class="st"> </span><span class="dv">9</span>
+ctOverTime<span class="op">$</span>startDate &lt;-<span class="st"> </span><span class="kw">as.character</span>(ctOverTime<span class="op">$</span>startDate)
+charLength &lt;-<span class="st"> </span><span class="kw">nchar</span>(ctOverTime<span class="op">$</span>startDate) <span class="op">==</span><span class="st"> </span><span class="dv">9</span>
 <span class="co"># cbind(ctOverTime$startDate,nchar(ctOverTime$startDate),charLength)</span>
-ctOverTime$startDate &lt;-<span class="st"> </span><span class="kw">ifelse</span>(charLength ==<span class="st"> </span><span class="ot">TRUE</span>,<span class="kw">paste</span>(<span class="st">&quot;0&quot;</span>,ctOverTime$startDate,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>),
-                               ctOverTime$startDate)
+ctOverTime<span class="op">$</span>startDate &lt;-<span class="st"> </span><span class="kw">ifelse</span>(charLength <span class="op">==</span><span class="st"> </span><span class="ot">TRUE</span>,<span class="kw">paste</span>(<span class="st">&quot;0&quot;</span>,ctOverTime<span class="op">$</span>startDate,<span class="dt">sep=</span><span class="st">&quot;&quot;</span>),
+                               ctOverTime<span class="op">$</span>startDate)
 #### plot
-ctOverTime$startDate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(ctOverTime$startDate,<span class="st">&quot;%m/%d/%Y&quot;</span>)
+ctOverTime<span class="op">$</span>startDate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(ctOverTime<span class="op">$</span>startDate,<span class="st">&quot;%m/%d/%Y&quot;</span>)
 <span class="kw">with</span>(ctOverTime, 
      
- <span class="kw">plot</span>(numOfTrials ~<span class="st"> </span>startDate, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Number of Intervention Trials Registered 2009-2019&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">250000</span>), <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Trials&quot;</span>)
+ <span class="kw">plot</span>(numOfTrials <span class="op">~</span><span class="st"> </span>startDate, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Number of Intervention Trials Registered 2009-2020&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">250000</span>), <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Trials&quot;</span>)
 )</code></pre></div>
 <p><img src="clinical_trials_files/figure-html/over%20time-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co">#    plot_ly( x=~startDate) %&gt;%</span>
