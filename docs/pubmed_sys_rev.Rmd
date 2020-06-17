@@ -30,7 +30,7 @@ We query PubMed via the API to find the number of records that are systematic re
 ```{r human sys rev human}
 # human systematic reviews pubmed query
 sys_rev_human_query <- "(systematic review[PTYP] AND human[MESH])"
-sys_rev_human_search <- entrez_search(db = "pubmed", sys_rev_human_query, use_history = TRUE )
+sys_rev_human_search <- entrez_search(db = "pubmed", sys_rev_human_query, use_history = FALSE )
 sys_rev_human_search$count
 ```
 
@@ -70,7 +70,7 @@ Then we query PubMed via the API to find the number of records that are systemat
 ```{r sys rev animal}
 alt_animal_query <- "(systematic review[PTYP] AND animal[MESH] NOT human[MESH])"
 
-sys_rev_animal_search <- entrez_search(db = "pubmed", alt_animal_query, use_history = TRUE )
+sys_rev_animal_search <- entrez_search(db = "pubmed", alt_animal_query, use_history = FALSE)
 sys_rev_animal_search$count
 ```
 

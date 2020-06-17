@@ -371,7 +371,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Identifying Trials Registerd on ClinicalTrials.gov</h1>
 <h4 class="author">Alexandra Bannach-Brown on behalf of the EQUATOR Network</h4>
-<h4 class="date">08 April, 2020</h4>
+<h4 class="date">17 June, 2020</h4>
 
 </div>
 
@@ -384,25 +384,25 @@ $(document).ready(function () {
 <h2>Total Number of Trials</h2>
 <p>The number of records in clinicaltrials.gov is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="st">&quot;ALL&quot;</span>)</code></pre></div>
-<pre><code>## [1] 335336</code></pre>
+<pre><code>## [1] 342900</code></pre>
 </div>
 <div id="total-number-of-actively-recruiting-trials" class="section level2">
 <h2>Total Number of Actively Recruiting Trials</h2>
 <p>The number of trials that are currently recruiting is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;recr=Recruiting&quot;</span>, <span class="st">&quot;ALL&quot;</span>))</code></pre></div>
-<pre><code>## [1] 51953</code></pre>
+<pre><code>## [1] 51616</code></pre>
 </div>
 <div id="total-number-of-completed-trials" class="section level2">
 <h2>Total Number of Completed Trials</h2>
 <p>The number of trials that are marked as completed:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;recr=Completed&quot;</span>, <span class="st">&quot;ALL&quot;</span>))</code></pre></div>
-<pre><code>## [1] 180744</code></pre>
+<pre><code>## [1] 184258</code></pre>
 </div>
 <div id="new-trials-in-2018" class="section level2">
 <h2>New Trials in 2018</h2>
 <p>The number of new trials posted in 2018 is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;rcv_s=01/01/2018&quot;</span>, <span class="st">&quot;rcv_e=12/31/2018&quot;</span>))</code></pre></div>
-<pre><code>## [1] 30978</code></pre>
+<pre><code>## [1] 30975</code></pre>
 </div>
 <div id="new-trials-in-2019" class="section level2">
 <h2>New Trials in 2019</h2>
@@ -414,7 +414,7 @@ $(document).ready(function () {
 <h2>New Trials in 2020</h2>
 <p>The number of new trials posted in 2020 is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">clinicaltrials_count</span>(<span class="dt">query =</span> <span class="kw">c</span>(<span class="st">&quot;rcv_s=01/01/2020&quot;</span>, <span class="st">&quot;rcv_e=12/31/2020&quot;</span>))</code></pre></div>
-<pre><code>## [1] 9490</code></pre>
+<pre><code>## [1] 17060</code></pre>
 </div>
 <div id="trials-registered-in-the-past-10-years" class="section level2">
 <h2>Trials Registered in the Past 10 years</h2>
@@ -456,7 +456,7 @@ ctOverTime<span class="op">$</span>startDate &lt;-<span class="st"> </span><span
 ctOverTime<span class="op">$</span>startDate &lt;-<span class="st"> </span><span class="kw">as.Date</span>(ctOverTime<span class="op">$</span>startDate,<span class="st">&quot;%m/%d/%Y&quot;</span>)
 <span class="kw">with</span>(ctOverTime, 
      
- <span class="kw">plot</span>(numOfTrials <span class="op">~</span><span class="st"> </span>startDate, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Number of Intervention Trials Registered 2009-2020&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">250000</span>), <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Trials&quot;</span>)
+ <span class="kw">plot</span>(numOfTrials <span class="op">~</span><span class="st"> </span>startDate, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>,<span class="dt">main=</span><span class="st">&quot;Number of Intervention Trials Registered 2009-2020&quot;</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">300000</span>), <span class="dt">xlab =</span> <span class="st">&quot;Time&quot;</span>,<span class="dt">ylab=</span><span class="st">&quot;Trials&quot;</span>)
 )</code></pre></div>
 <p><img src="clinical_trials_files/figure-html/over%20time-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">  <span class="co">#    plot_ly( x=~startDate) %&gt;%</span>

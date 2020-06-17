@@ -117,7 +117,7 @@ ctOverTime$startDate <- ifelse(charLength == TRUE,paste("0",ctOverTime$startDate
 ctOverTime$startDate <- as.Date(ctOverTime$startDate,"%m/%d/%Y")
 with(ctOverTime, 
      
- plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials Registered 2009-2020", ylim = c(0,250000), xlab = "Time",ylab="Trials")
+ plot(numOfTrials ~ startDate, type = "l",main="Number of Intervention Trials Registered 2009-2020", ylim = c(0,300000), xlab = "Time",ylab="Trials")
 )
      
   #    plot_ly( x=~startDate) %>%
